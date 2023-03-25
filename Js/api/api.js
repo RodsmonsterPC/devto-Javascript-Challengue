@@ -37,3 +37,6 @@ const deletePost = async (id) => {
   let data = response.json();
   return data;
 };
+
+
+export {getPost, getPostId}

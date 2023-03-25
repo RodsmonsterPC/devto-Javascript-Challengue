@@ -1,4 +1,4 @@
-{
+
   /*            <div class="card shadow mb-2" > _divContainer
                         <div class="card-body"> _divBody
                               <div class="d-flex mb-3 align-items-center"> _divInfo
@@ -37,10 +37,11 @@
                         </div>
                     </div>
                  */
-}
 
-export default {
-  postPrint: (
+
+
+
+  const postPrint = (
     imgSource,
     nameInfo,
     dateCreate,
@@ -67,7 +68,7 @@ export default {
     imgData.setAttribute("style", "width:40px;");
 
     let spanName = document.createElement("span");
-    spanName.classList.add(..."d-flex  flex-column".split(" "));
+    spanName.classList.add(..."d-flex flex-column".split(" "));
     let h5Name = document.createElement("h5");
     h5Name.textContent = nameInfo;
 
@@ -103,22 +104,22 @@ export default {
       ..."d-flex justify-content-between w-100".split(" ")
     );
 
-    let divInfoReactions = document.createElement("div");
-    divInfoReactions.classList.add(..."d-flex align-items-center".split(" "));
+    // let divInfoReactions = document.createElement("div");
+    // divInfoReactions.classList.add(..."d-flex align-items-center".split(" "));
 
-    let spanReactions = document.createElement("span");
-    spanReactions.classList.add(..."d-flex align-items-center me-3".split(" "));
-    spanReactions.textContent = postReactions;
+    // let spanReactions = document.createElement("span");
+    // spanReactions.classList.add(..."d-flex align-items-center me-3".split(" "));
+    // spanReactions.textContent = postReactions;
 
-    let imgReaction = document.createElement("img");
-    imgReaction.setAttribute("src", "../assets/heart-icon.svg");
+    // let imgReaction = document.createElement("img");
+    // imgReaction.setAttribute("src", "../assets/heart-icon.svg");
 
-    spanReactions.appendChild(imgReaction);
+    // spanReactions.appendChild(imgReaction);
 
-    let spanCommnets = document.createElement("span");
-    spanCommnets.textContent = postComent;
+    // let spanCommnets = document.createElement("span");
+    // spanCommnets.textContent = postComent;
 
-    divInfoReactions.append(spanReactions, spanCommnets);
+    // divInfoReactions.append(spanReactions, spanCommnets);
 
     let divCreationTime = document.createElement("div");
 
@@ -129,12 +130,16 @@ export default {
     let imageContent = document.createElement("img");
     imageContent.setAttribute("src", "../assets/save-icon.svg");
 
-    spanTime.append(imageContent);
-    divCreationTime.appendchild(spanTime);
+    spanTime.appendChild(imageContent);
+    divCreationTime.appendChild(spanTime);
 
-    divReactions.append(divInfoReactions, divCreationTime);
+    divReactions.append( divCreationTime);
 
-    divBody.append(divInfo, divTags, divInfoReactions, divCreationTime);
+    divBody.append(divInfo, divTags, divCreationTime);
     divContainer.appendChild(divBody);
-  },
-};
+
+    return divContainer
+  }
+
+  export {postPrint }
+
