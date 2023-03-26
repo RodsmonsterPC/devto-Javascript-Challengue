@@ -1,5 +1,4 @@
-
-  /*            <div class="card shadow mb-2" > _divContainer
+/*            <div class="card shadow mb-2" > _divContainer
                         <div class="card-body"> _divBody
                               <div class="d-flex mb-3 align-items-center"> _divInfo
                                     <img class="rounded-circle border object-fit-cover me-3" src="https://i.pravatar.cc/" style="width:40px;">
@@ -38,108 +37,106 @@
                     </div>
                  */
 
+const postPrint = (
+  imgSource,
+  nameInfo,
+  dateCreate,
+  postTitle,
+  postTags,
+  postReactions,
+  postComent,
+  postTime,
+  postId
+) => {
+  let divContainer = document.createElement("div");
+  divContainer.classList.add(..."card shadow mb-2".split(" "));
 
+  let divBody = document.createElement("div");
+  divBody.classList.add("card-body");
 
+  let divInfo = document.createElement("div");
+  divInfo.classList.add(..."d-flex mb-3 align-items-center".split(" "));
 
-  const postPrint = (
-    imgSource,
-    nameInfo,
-    dateCreate,
-    postTitle,
-    postTags,
-    postReactions,
-    postComent,
-    postTime
-  ) => {
-    let divContainer = document.createElement("div");
-    divContainer.classList.add(..."card shadow mb-2".split(" "));
+  let imgData = document.createElement("img");
+  imgData.classList.add(
+    ..."rounded-circle border object-fit-cover me-3".split(" ")
+  );
+  imgData.setAttribute("src", imgSource);
+  imgData.setAttribute("style", "width:40px;");
 
-    let divBody = document.createElement("div");
-    divBody.classList.add("card-body");
+  let spanName = document.createElement("span");
+  spanName.classList.add(..."d-flex flex-column".split(" "));
+  let h5Name = document.createElement("h5");
+  h5Name.textContent = nameInfo;
 
-    let divInfo = document.createElement("div");
-    divInfo.classList.add(..."d-flex mb-3 align-items-center".split(" "));
+  spanName.appendChild(h5Name);
 
-    let imgData = document.createElement("img");
-    imgData.classList.add(
-      ..."rounded-circle border object-fit-cover me-3".split(" ")
-    );
-    imgData.setAttribute("src", imgSource);
-    imgData.setAttribute("style", "width:40px;");
+  let spanDateCreate = document.createElement("span");
+  spanDateCreate.textContent = dateCreate;
 
-    let spanName = document.createElement("span");
-    spanName.classList.add(..."d-flex flex-column".split(" "));
-    let h5Name = document.createElement("h5");
-    h5Name.textContent = nameInfo;
+  divInfo.append(imgData, spanName, spanDateCreate);
 
-    spanName.appendChild(h5Name);
+  let divTags = document.createElement("div");
 
-    let spanDateCreate = document.createElement("span");
-    spanDateCreate.textContent = dateCreate;
+  let h1Title = document.createElement("h1");
+  h1Title.classList.add("card-title");
 
-    divInfo.append(imgData, spanName, spanDateCreate);
+  let anchor = document.createElement("a");
+  anchor.setAttribute("href", `./detailPost.html?postId=${postId}`);
+  anchor.textContent = postTitle;
 
-    let divTags = document.createElement("div");
+  h1Title.appendChild(anchor);
 
-    let h1Title = document.createElement("h1");
-    h1Title.classList.add("card-title");
+  let ulTags = document.createElement("ul");
+  ulTags.classList.add("list-tag__main");
 
-    let anchor = document.createElement("a");
-    anchor.textContent = postTitle;
+  let liTag = document.createElement("li");
+  liTag.textContent = postTags;
 
-    h1Title.appendChild(anchor);
+  ulTags.appendChild(liTag);
 
-    let ulTags = document.createElement("ul");
-    ulTags.classList.add("list-tag__main");
+  divTags.append(h1Title, ulTags);
 
-    let liTag = document.createElement("li");
-    liTag.textContent = postTags;
+  let divReactions = document.createElement("div");
+  divReactions.classList.add(
+    ..."d-flex justify-content-between w-100".split(" ")
+  );
 
-    ulTags.appendChild(liTag);
+  // let divInfoReactions = document.createElement("div");
+  // divInfoReactions.classList.add(..."d-flex align-items-center".split(" "));
 
-    divTags.append(h1Title, ulTags);
+  // let spanReactions = document.createElement("span");
+  // spanReactions.classList.add(..."d-flex align-items-center me-3".split(" "));
+  // spanReactions.textContent = postReactions;
 
-    let divReactions = document.createElement("div");
-    divReactions.classList.add(
-      ..."d-flex justify-content-between w-100".split(" ")
-    );
+  // let imgReaction = document.createElement("img");
+  // imgReaction.setAttribute("src", "../assets/heart-icon.svg");
 
-    // let divInfoReactions = document.createElement("div");
-    // divInfoReactions.classList.add(..."d-flex align-items-center".split(" "));
+  // spanReactions.appendChild(imgReaction);
 
-    // let spanReactions = document.createElement("span");
-    // spanReactions.classList.add(..."d-flex align-items-center me-3".split(" "));
-    // spanReactions.textContent = postReactions;
+  // let spanCommnets = document.createElement("span");
+  // spanCommnets.textContent = postComent;
 
-    // let imgReaction = document.createElement("img");
-    // imgReaction.setAttribute("src", "../assets/heart-icon.svg");
+  // divInfoReactions.append(spanReactions, spanCommnets);
 
-    // spanReactions.appendChild(imgReaction);
+  let divCreationTime = document.createElement("div");
 
-    // let spanCommnets = document.createElement("span");
-    // spanCommnets.textContent = postComent;
+  let spanTime = document.createElement("span");
+  spanTime.classList.add(..."d-flex align-items-center".split(" "));
+  spanTime.textContent = postTime;
 
-    // divInfoReactions.append(spanReactions, spanCommnets);
+  let imageContent = document.createElement("img");
+  imageContent.setAttribute("src", "../assets/save-icon.svg");
 
-    let divCreationTime = document.createElement("div");
+  spanTime.appendChild(imageContent);
+  divCreationTime.appendChild(spanTime);
 
-    let spanTime = document.createElement("span");
-    spanTime.classList.add(..."d-flex align-items-center".split(" "));
-    spanTime.textContent = postTime;
+  divReactions.append(divCreationTime);
 
-    let imageContent = document.createElement("img");
-    imageContent.setAttribute("src", "../assets/save-icon.svg");
+  divBody.append(divInfo, divTags, divCreationTime);
+  divContainer.appendChild(divBody);
 
-    spanTime.appendChild(imageContent);
-    divCreationTime.appendChild(spanTime);
+  return divContainer;
+};
 
-    divReactions.append( divCreationTime);
-
-    divBody.append(divInfo, divTags, divCreationTime);
-    divContainer.appendChild(divBody);
-
-    return divContainer
-  }
-
-  export {postPrint }
-
+export { postPrint };

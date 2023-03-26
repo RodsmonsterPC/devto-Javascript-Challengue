@@ -5,8 +5,288 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/styles_second_page.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <script src="../Js/login.js"></script>
+    <header>
+      <nav class="">
+        <nav class="navbar fixed-top border-bottom p-0">
+          <div class="container-fluid d-flex justify-content-md-between">
+            <div class="d-flex">
+              <button
+                class="navbar-toggler d-md-none border border-light"
+                type=" button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar"
+              >
+                <span
+                  class="navbar-toggler-icon d-flex align-items-center"
+                ></span>
+              </button>
+              <img class="" src="./images/dev_to_icon_136699.png" alt="" />
+              <div
+                class="input-group align-items-center w-auto contendorsearch"
+              >
+                <input
+                  type="text"
+                  class="form-control d-none h-75 border-end-0 d-md-flex"
+                  placeholder="Search..."
+                  aria-label="Search"
+                  aria-describedby="basic-addon1"
+                />
+                <span
+                  class="input-group-text d-none d-md-flex h-75"
+                  id="basic-addon1"
+                >
+                  <img
+                    class="d-none d-md-block"
+                    src="./images/magnifier_magnifying_glass_magnifying_view_search_icon_196570.png"
+                    alt=""
+                  />
+                </span>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <a href="#"
+                ><img
+                  class="p-1 d-md-none"
+                  src="./images/magnifier_magnifying_glass_magnifying_view_search_icon_196570.png"
+                  alt=""
+              /></a>
+              <button
+                type="button"
+                class="btn btn-outline-primary d-none d-md-block createpost"
+              >
+                Create Post
+              </button>
+              <a href="#"
+                ><img
+                  class="m-3"
+                  src="./images/bell_simple_thin_icon_171966.png"
+                  alt=""
+              /></a>
+              <a href="">
+                <img
+                  class="border border-dark rounded-circle"
+                  src="./images/avatar_people_adult_man_icon_159129.png"
+                  alt=""
+              /></a>
+            </div>
+            <div
+              class="offcanvas offcanvas-start"
+              tabindex="-1"
+              id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                  DEV Community
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/home.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Home</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/achive.png" alt="" /><a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="#"
+                      >Reading List</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/listing.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Listings</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/podcasts.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Podcasts</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/videos.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Videos</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/tags.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Tags</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/faq.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >FAQ</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/shop.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Forem Shop</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/sponsors.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Sponsors</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img class="about1" src="images/about.png " alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >About</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/contact.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Contact</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img class="about1" src="images/guides.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Guides</a
+                    >
+                  </li>
+                  <br />
+                  <h5>Others</h5>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/thumb_up.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Code of Conduct</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/policy.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Privacy Policy</a
+                    >
+                  </li>
+                  <li
+                    class="nav-item d-flex align-items-center justify-content-start"
+                  >
+                    <img src="images/eyes.png" alt="" />
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Terms of use</a
+                    >
+                  </li>
+                </ul>
+
+                <div class="d-flex justify-content-between mt-3">
+                  <img src="./images/TWITTER_icon-icons.com_65486.png" alt="" />
+                  <img
+                    src="./images/Facebook_Square_icon-icons.com_49948.png"
+                    alt=""
+                  />
+                  <img
+                    src="./images/Github_icon-icons.com_49946.png"
+                    alt=""
+                    href="#"
+                  />
+                  <img
+                    src="./images/instagram_logo_icon_173753.png"
+                    alt=""
+                    href="#"
+                  />
+                  <img src="./images/twitch_icon_137066.png" alt="" href="#" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </nav>
+    </header>
+    <div></div>
+    <div class="card text-center">
+      <div class="card-header">Featured</div>
+      <div class="card-body">
+        <h5 class="card-title">Welcome to DEV Community</h5>
+        <p class="card-text">
+          DEV Community is a community of 900,533 amazing developers
+        </p>
+        <div class="d-grid gap-2 col-3 mx-auto">
+          <button class="btn bg-dark btn-primary" type="button">
+            Continue with Apple
+          </button>
+          <button class="btn bg-warning btn-primary" type="button">
+            Continue with Google
+          </button>
+          <button class="btn bg-dark btn-primary" type="button">
+            Continue with Github
+          </button>
+          <button class="btn bg-info btn-primary" type="button">
+            Continue with Twitter
+          </button>
+        </div>
+        <br />
+        <h5>Email</h5>
+        <input class="col-3" type="text" />
+        <br />
+        <h5>Password</h5>
+        <input class="col-3" type="text" />
+        <br />
+        <a href="#" class="btn btn-primary">Continue</a>
+      </div>
+      <div class="card-footer text-muted">2 days ago</div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../Js/containers/login.js"></script>
   </body>
 </html>
