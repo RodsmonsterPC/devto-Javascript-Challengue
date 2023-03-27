@@ -38,15 +38,11 @@
                  */
 
 const postPrint = (
-  imgSource,
   nameInfo,
   dateCreate,
   postTitle,
   postTags,
-  postReactions,
-  postComent,
-  postTime,
-  postId
+  key
 ) => {
   let divContainer = document.createElement("div");
   divContainer.classList.add(..."card shadow mb-2".split(" "));
@@ -61,20 +57,20 @@ const postPrint = (
   imgData.classList.add(
     ..."rounded-circle border object-fit-cover me-3".split(" ")
   );
-  imgData.setAttribute("src", imgSource);
-  imgData.setAttribute("style", "width:40px;");
+  imgData.setAttribute("src", "https://picsum.photos/200/100");
+  imgData.setAttribute("style", "width:50px; height:50px; object-fit:cover");
 
   let spanName = document.createElement("span");
   spanName.classList.add(..."d-flex flex-column".split(" "));
   let h5Name = document.createElement("h5");
   h5Name.textContent = nameInfo;
-
-  spanName.appendChild(h5Name);
-
   let spanDateCreate = document.createElement("span");
-  spanDateCreate.textContent = dateCreate;
+  spanName.append(h5Name,spanDateCreate);
 
-  divInfo.append(imgData, spanName, spanDateCreate);
+
+  spanDateCreate.textContent = `${moment(dateCreate).format("MMM Do")} (${moment(dateCreate).startOf('day').fromNow()})`;
+
+  divInfo.append(imgData, spanName);
 
   let divTags = document.createElement("div");
 
@@ -82,18 +78,23 @@ const postPrint = (
   h1Title.classList.add("card-title");
 
   let anchor = document.createElement("a");
-  anchor.setAttribute("href", `./detailPost.html?postId=${postId}`);
+  anchor.setAttribute("href", `./detailPost.html?postId=${key}`);
   anchor.textContent = postTitle;
 
   h1Title.appendChild(anchor);
 
   let ulTags = document.createElement("ul");
   ulTags.classList.add("list-tag__main");
+  ulTags.setAttribute("id", "list-tag");
+  let liArray = Object.values(postTags)
 
-  let liTag = document.createElement("li");
-  liTag.textContent = postTags;
+  liArray.forEach((element) => {
+    let liTag = document.createElement("li");
+    liTag.textContent = `#${element}`;
+    ulTags.appendChild(liTag);
+  });
 
-  ulTags.appendChild(liTag);
+
 
   divTags.append(h1Title, ulTags);
 
@@ -102,28 +103,30 @@ const postPrint = (
     ..."d-flex justify-content-between w-100".split(" ")
   );
 
-  // let divInfoReactions = document.createElement("div");
-  // divInfoReactions.classList.add(..."d-flex align-items-center".split(" "));
+  let divInfoReactions = document.createElement("div");
+  divInfoReactions.classList.add(..."d-flex align-items-center".split(" "));
 
-  // let spanReactions = document.createElement("span");
-  // spanReactions.classList.add(..."d-flex align-items-center me-3".split(" "));
-  // spanReactions.textContent = postReactions;
+  let spanReactions = document.createElement("span");
+  spanReactions.classList.add(..."d-flex align-items-center me-3".split(" "));
+  spanReactions.textContent = "5 Reactions";
+  let imgReaction = document.createElement("img");
+  imgReaction.setAttribute("src", "../assets/heart-icon.svg");
 
-  // let imgReaction = document.createElement("img");
-  // imgReaction.setAttribute("src", "../assets/heart-icon.svg");
+  spanReactions.appendChild(imgReaction);
 
-  // spanReactions.appendChild(imgReaction);
+  let spanCommnets = document.createElement("span");
+  let imgComment = document.createElement("img");
+  imgComment.setAttribute("src", "../assets/comment-icon.svg");
 
-  // let spanCommnets = document.createElement("span");
-  // spanCommnets.textContent = postComent;
+  spanCommnets.appendChild(imgComment);
 
-  // divInfoReactions.append(spanReactions, spanCommnets);
+  divInfoReactions.append(spanReactions, spanCommnets);
 
   let divCreationTime = document.createElement("div");
 
   let spanTime = document.createElement("span");
   spanTime.classList.add(..."d-flex align-items-center".split(" "));
-  spanTime.textContent = postTime;
+  spanTime.textContent = "3 min";
 
   let imageContent = document.createElement("img");
   imageContent.setAttribute("src", "../assets/save-icon.svg");
@@ -131,9 +134,9 @@ const postPrint = (
   spanTime.appendChild(imageContent);
   divCreationTime.appendChild(spanTime);
 
-  divReactions.append(divCreationTime);
+  divReactions.append(divInfoReactions,divCreationTime);
 
-  divBody.append(divInfo, divTags, divCreationTime);
+  divBody.append(divInfo, divTags, divReactions);
   divContainer.appendChild(divBody);
 
   return divContainer;
