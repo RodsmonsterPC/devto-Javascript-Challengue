@@ -37,13 +37,7 @@
                     </div>
                  */
 
-const postPrint = (
-  nameInfo,
-  dateCreate,
-  postTitle,
-  postTags,
-  key
-) => {
+const postPrint = (nameInfo, dateCreate, postTitle, postTags, key) => {
   let divContainer = document.createElement("div");
   divContainer.classList.add(..."card shadow mb-2".split(" "));
 
@@ -65,10 +59,11 @@ const postPrint = (
   let h5Name = document.createElement("h5");
   h5Name.textContent = nameInfo;
   let spanDateCreate = document.createElement("span");
-  spanName.append(h5Name,spanDateCreate);
+  spanName.append(h5Name, spanDateCreate);
 
-
-  spanDateCreate.textContent = `${moment(dateCreate).format("MMM Do")} (${moment(dateCreate).startOf('day').fromNow()})`;
+  spanDateCreate.textContent = `${moment(dateCreate).format(
+    "MMM Do"
+  )} (${moment(dateCreate).startOf("day").fromNow()})`;
 
   divInfo.append(imgData, spanName);
 
@@ -86,15 +81,13 @@ const postPrint = (
   let ulTags = document.createElement("ul");
   ulTags.classList.add("list-tag__main");
   ulTags.setAttribute("id", "list-tag");
-  let liArray = Object.values(postTags)
+  let liArray = Object.values(postTags);
 
   liArray.forEach((element) => {
     let liTag = document.createElement("li");
     liTag.textContent = `#${element}`;
     ulTags.appendChild(liTag);
   });
-
-
 
   divTags.append(h1Title, ulTags);
 
@@ -134,7 +127,7 @@ const postPrint = (
   spanTime.appendChild(imageContent);
   divCreationTime.appendChild(spanTime);
 
-  divReactions.append(divInfoReactions,divCreationTime);
+  divReactions.append(divInfoReactions, divCreationTime);
 
   divBody.append(divInfo, divTags, divReactions);
   divContainer.appendChild(divBody);

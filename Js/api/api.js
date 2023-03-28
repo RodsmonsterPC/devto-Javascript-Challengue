@@ -10,11 +10,9 @@ const getPost = async () => {
 
 const getPostId = async (id) => {
   let response = await fetch(
-    `https://devto-9f944-default-rtdb.firebaseio.com/${id}/.json`
-    
-
+    `https://devto-9f944-default-rtdb.firebaseio.com/data/${id}/.json`
   );
-  
+
   let data = response.json();
 
   return data;
@@ -40,5 +38,4 @@ const deletePost = async (id) => {
   return data;
 };
 
-
-export {getPost, getPostId}
+export { getPost, getPostId };

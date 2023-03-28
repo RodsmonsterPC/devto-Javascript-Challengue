@@ -330,11 +330,7 @@
         <main class="col-12 col-lg-8 col-md-8">
           <section class="">
             <div class="card">
-              <img
-                src="https://picsum.photos/200/80"
-                class="card-img-top"
-                alt="..."
-              />
+              <img id="post-image" src="" class="card-img-top" alt="..." />
               <div class="card-body py-4 px-5">
                 <div class="d-flex mb-3 align-items-center">
                   <img
@@ -343,51 +339,15 @@
                     style="width: 40px"
                   />
                   <span class="d-flex flex-column">
-                    <h5 class="fs-6 fw-bold">Jonathan Walters</h5>
-                    <span class="fs-6 fw-light">Feb 1 (13 hours ago)</span>
+                    <h5 class="author fs-6 fw-bold"></h5>
+                    <span id="post-date" class="fs-6 fw-light"></span>
                   </span>
                 </div>
-                <div class="">
-                  <h1 class="card-title">Netlify Acquires GatsbyJS</h1>
-                  <ul class="list-tag__main">
-                    <li class="">#news</li>
-                    <li class="">#javascript</li>
-                    <li class="">#webdev</li>
-                    <li class="">#gatsby</li>
-                  </ul>
+                <div id="post-tags" class="">
+                  <h1 id="post-title" class="card-title"></h1>
+                  <ul id="list-tags" class="list-tag__main"></ul>
                 </div>
-                <div>
-                  <p class="card-text">
-                    🚀 20 Engineering Blogs from Product companies like
-                    Facebook, Uber, Netflix, Stripe that have inspired and
-                    helped me raise the bar on building great products.
-                    <br />
-                    Highly recommended for Software Engineers, Architects,
-                    Engineering Manager and Product Manages.
-                  </p>
-                  <h3>Node Best Practices</h3>
-                  <p>
-                    📝 The largest Node.js best practices list (August 2020)
-                    <br />
-                    Curated from the top ranked articles and books on Node.js
-                    best practices, this list will help you become a better
-                    Node.js developer
-                  </p>
-                  <h3>Node Best Practices</h3>
-                  <p>
-                    📝 The largest Node.js best practices list (August 2020)
-                    <br />
-                    Curated from the top ranked articles and books on Node.js
-                    best practices, this list will help you become a better
-                    Node.js developer
-                  </p>
-                  <span
-                    >+81.7k ⭐ ️=>
-                    <a href=""
-                      >https://github.com/goldbergyoni/nodebestpractices</a
-                    >
-                  </span>
-                </div>
+                <div id="post-content" class="card-text"></div>
               </div>
               <hr />
               <div class="px-5 py-3">
@@ -426,8 +386,7 @@
                       style="width: 40px; height: 40px"
                     />
                     <div class="card w-100 p-3">
-                      <h5 class="fs-6 fw-bold">
-                        Jonathan Walters
+                      <h5 class="author fs-6 fw-bold">
                         <span class="fs-6 fw-light">Feb 1 (13 hours ago)</span>
                       </h5>
                       <p class="card-text">
@@ -481,7 +440,7 @@
                   style="width: 40px"
                 />
                 <span class="d-flex flex-column">
-                  <h5 class="fs-5 fw-bold">Jonathan Walters</h5>
+                  <h5 class="author fs-5 fw-bold"></h5>
                 </span>
               </div>
             </a>
@@ -575,8 +534,11 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script  
-     type="module"
-    src="../Js/containers/detail.js"></script>
+    <script type="module" src="../Js/containers/detail.js"></script>
+    <script type="module" src="../Js/main.js"></script>
+    <script
+      type="text/JavaScript"
+      src="https://MomentJS.com/downloads/moment.js"
+    ></script>
   </body>
 </html>
