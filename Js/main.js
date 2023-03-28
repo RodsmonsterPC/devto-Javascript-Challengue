@@ -18,3 +18,24 @@ const printCard = async () => {
 };
 
 printCard();
+
+let buttonLogin = document.querySelectorAll(".btn-login");
+
+buttonLogin.forEach((element) => {
+  element.addEventListener("click", () =>
+    window.open("../views/login.html", "_self")
+  );
+});
+
+const signUp = () => {
+  localStorage.getItem("token")
+    ? window.open("../views/home.html", "_self")
+    : window.open("../index.html", "_self");
+};
+
+let signOut = document.querySelector("#btn-signOut");
+
+signOut.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  signUp();
+});
