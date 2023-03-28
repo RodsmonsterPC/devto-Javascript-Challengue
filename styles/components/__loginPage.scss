@@ -21,13 +21,10 @@
   font-family: $ff-sans-serif;
 }
 .input-form {
-  width: 33.5rem;
   display: flex;
   flex-direction: column;
   margin-left: 3rem;
-}
-.card-form {
-  width: 40rem;
+  margin-right: 3.5rem;
 }
 
 .btn-continue {

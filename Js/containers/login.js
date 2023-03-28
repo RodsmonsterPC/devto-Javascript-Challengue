@@ -20,6 +20,14 @@ const submitForm = () => {
     : alert("Llene todos los campos");
 };
 
+const resetForm = () => {
+  document.querySelectorAll("#form-info input").forEach((element) => {
+    element.value = "";
+    data = {};
+  });
+};
+
 buttonContinue.addEventListener("click", () => {
+  resetForm();
   submitForm();
 });
