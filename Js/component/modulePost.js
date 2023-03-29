@@ -42,6 +42,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
   divContainer.classList.add(..."card shadow mb-2".split(" "));
 
   let cover = document.createElement('img')
+
   cover.classList.add("card-img-cover")
 
   cover.setAttribute('src','https://picsum.photos/200/100')
