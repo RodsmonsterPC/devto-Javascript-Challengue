@@ -86,9 +86,9 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
   let ulTags = document.createElement("ul");
   ulTags.classList.add("list-tag__main");
   ulTags.setAttribute("id", "list-tag");
-  // let liArray = Object.values(postTags);
-  console.log(postTags)
-  postTags.forEach((element) => {
+  let liArray = Object.values(postTags);
+
+  liArray.forEach((element) => {
     let liTag = document.createElement("li");
     liTag.textContent = `#${element}`;
     ulTags.appendChild(liTag);

@@ -1,5 +1,4 @@
 import { getPost} from "./api/api.js";
-
 import { postPrint } from "./component/modulePost.js";
 
 
@@ -19,7 +18,6 @@ const printCard = async () => {
         if(title.toUpperCase().indexOf(filter) > -1){
             wrapper.append(col)
         }
-       
 
     }
 
