@@ -42,8 +42,8 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
   divContainer.classList.add(..."card shadow mb-2".split(" "));
 
   let cover = document.createElement('img')
-  cover.classList.add(dataPost ?'card-img-top':'d-none')
-  console.log(dataPost[0])
+  cover.classList.add("card-img-cover")
+
   cover.setAttribute('src','https://picsum.photos/200/100')
 
   let divBody = document.createElement("div");

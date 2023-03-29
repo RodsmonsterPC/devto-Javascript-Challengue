@@ -23,7 +23,6 @@ const createPost = async (postInfo) => {
     `https://devto-9f944-default-rtdb.firebaseio.com/data/.json`,
     { method: "POST", body: JSON.stringify(postInfo) }
   );
-
   let data = response.json();
   return data;
 };
@@ -38,4 +37,4 @@ const deletePost = async (id) => {
   return data;
 };
 
-export { getPost, getPostId };
+export { getPost,getPostId,createPost};
