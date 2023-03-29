@@ -1,4 +1,6 @@
+
 @import "../modules/_globals";
+
 .active {
   border: none !important;
   background: none;
@@ -33,10 +35,28 @@
     cursor: pointer;
   }
 
+
   li:hover {
     border: 1px solid $syntax-comment-color;
     border-radius: 0.5em;
     padding: 0.2em;
     cursor: pointer;
+  }
+}
+
+.card-img-cover {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#container-wrapper {
+  .card {
+    &:not(:first-of-type) {
+      .card-img-cover {
+        display: none;
+      }
+    }
+
   }
 }

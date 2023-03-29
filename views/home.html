@@ -22,7 +22,7 @@
                         <img src="../assets/dev-badge.svg" alt="logo" width="40" height="40" class="d-inline-block align-text-top">
                     </a>
                     <div class="input-group  border rounded-2 align-items-center d-none d-lg-flex" >
-                        <input type="search" class="form-control border border-0" placeholder="Search..." >
+                        <input type="search" id="search-input" class="form-control border border-0" placeholder="Search..." value="">
                         <div class="input-group-append">
                           <button class="btn" type="button"><img src="../assets/search-icon.svg" alt=""></button>
                         </div>
@@ -31,6 +31,7 @@
 
                 <div>
                     <button type="button" class="btn btn-outline-primary d-none d-lg-inline mx-3">Create Post</button>
+
                     <img src="../assets/search-icon.svg" alt="search" class="iconsearch d-lg-none" width="24" height="24">
                     <img src="../assets/notification-icon.svg" alt="bell" class="iconbell" width="24" height="24">
                     <div class="btn-group mx-2" role="group">
@@ -389,49 +390,9 @@
                         </li>
                     </ul>
                 </div>
-                <section>
-                    <div class="card shadow mb-2" >
-                        <img src="https://picsum.photos/200/100" class="card-img-top" alt="...">
-                        <div class="card-body">
-                              <div class="d-flex mb-3 align-items-center ">
-                                    <img class="rounded-circle border object-fit-cover me-3" src="https://i.pravatar.cc/" style="width:40px;">
-                                    <span class="d-flex  flex-column">
-                                    <h5 class="fs-6 fw-bold">Jonathan Walters</h5>
-                                    <span class="fs-6 fw-light">Feb 1 (13 hours ago)</span>
-                                    </span>
-                                </div>
-                              <div>
-                                    <h1 class="card-title"><a href="./views/postView.html">Netlify Acquires GatsbyJS</a> </h1>
-                                    <ul class="list-tag__main">
-                                        <li class="">#news</li>
-                                        <li class="">#javascript</li>
-                                        <li class="">#webdev</li>
-                                        <li class="">#gatsby</li>
-                                    </ul>
-                              </div>
-                              <div class="d-flex justify-content-between w-100">
-                                <div class="d-flex align-items-center" >
-                                    <span class="d-flex align-items-center me-3">
-                                        <img src="../assets/heart-icon.svg" alt="">
-                                        8 Reactions
-                                    </span>
-                                    <span class="d-flex align-items-center" >
-                                        <img src="../assets/comment-icon.svg" alt="">
-                                        2 Comments
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class="d-flex align-items-center">1 min <img src="../assets/save-icon.svg" alt=""></span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div id="container-wrapper" >
-
-                        
-                        
-                    </div>
+                <section id="container-wrapper">
+                    
+                 
   
                     
                 </section>

@@ -37,9 +37,14 @@
                     </div>
                  */
 
-const postPrint = (nameInfo, dateCreate, postTitle, postTags, key) => {
+const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
   let divContainer = document.createElement("div");
   divContainer.classList.add(..."card shadow mb-2".split(" "));
+
+  let cover = document.createElement('img')
+  cover.classList.add("card-img-cover")
+
+  cover.setAttribute('src','https://picsum.photos/200/100')
 
   let divBody = document.createElement("div");
   divBody.classList.add("card-body");
@@ -130,7 +135,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key) => {
   divReactions.append(divInfoReactions, divCreationTime);
 
   divBody.append(divInfo, divTags, divReactions);
-  divContainer.appendChild(divBody);
+  divContainer.append(cover,divBody);
 
   return divContainer;
 };

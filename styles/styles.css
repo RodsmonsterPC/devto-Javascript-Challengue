@@ -173,6 +173,17 @@ footer ul li {
   cursor: pointer;
 }
 
+.card-img-cover {
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#container-wrapper .card:not(:first-of-type) .card-img-cover {
+  display: none;
+}
+
 .left-aside {
   position: fixed;
   bottom: 0;
@@ -222,6 +233,7 @@ footer ul li {
     width: 100%;
   }
 }
+
 .form-container {
   background-color: #f6f6f6;
 }
@@ -253,6 +265,7 @@ footer ul li {
 
 .btn-continue {
   margin-bottom: 2rem;
+
 }
 
 * {
