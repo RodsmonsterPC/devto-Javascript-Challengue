@@ -28,6 +28,6 @@ const resetForm = () => {
 };
 
 buttonContinue.addEventListener("click", () => {
-  resetForm();
   submitForm();
+  resetForm();
 });
