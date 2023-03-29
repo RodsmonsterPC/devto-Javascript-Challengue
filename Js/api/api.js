@@ -18,19 +18,36 @@ const getPostId = async (id) => {
   return data;
 };
 
+const createComment = async (commentInfo, id) => {
+  let response = await fetch(
+    `https://devto-9f944-default-rtdb.firebaseio.com/data/${id}/comments/.json`,
+    { method: "POST", body: JSON.stringify(commentInfo) }
+  );
+  let data = response.json();
+  return data;
+};
+
+const getComment = async (id) => {
+  let response = await fetch(
+    `https://devto-9f944-default-rtdb.firebaseio.com/data/${id}/comments/.json`
+  );
+  let data = response.json();
+  return data;
+};
+
+
 const createPost = async (postInfo) => {
   let response = await fetch(
     `https://devto-9f944-default-rtdb.firebaseio.com/data/.json`,
     { method: "POST", body: JSON.stringify(postInfo) }
   );
-
   let data = response.json();
   return data;
 };
 
 const deletePost = async (id) => {
   let response = await fetch(
-    `https://devto-9f944-default-rtdb.firebaseio.com/${id}/.json`,
+    `https://devto-9f944-default-rtdb.firebaseio.com/data/${id}/.json`,
     { method: "DELETE" }
   );
 
@@ -38,4 +55,4 @@ const deletePost = async (id) => {
   return data;
 };
 
-export { getPost, getPostId };
+export { getPost,getPostId,createPost,deletePost,createComment,getComment};

@@ -7,7 +7,7 @@ inputsValue.forEach((fieldsData) => {
   fieldsData.addEventListener("keyup", (event) => {
     let property = event.target.name;
     let value = event.target.value;
-
+    console.log(value);
     data[property] = value;
   });
 });
