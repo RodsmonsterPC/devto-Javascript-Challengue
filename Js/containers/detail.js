@@ -6,15 +6,10 @@ let postId = urlParams.get("postId");
 const printPost = async () => {
   let postDetail = await getPostId(postId);
 
-  let { image, author, date, title, Tag, content } = postDetail;
+  let { image, date, title, Tag, content } = postDetail;
 
   document.querySelector("#post-image").setAttribute("src", image);
 
-  let authors = document.querySelectorAll(".author");
-
-  authors.forEach((element) => {
-    element.textContent = author;
-  });
 
   document.querySelector("#post-date").textContent = `${moment(date).format(
     "MMM Do"

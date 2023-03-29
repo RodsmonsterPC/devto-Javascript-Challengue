@@ -20,6 +20,7 @@ const createForm = ()=>{
         image: inputImage.value,
         author: inputAuthor.value,
         Tag: TagArray,
+        comments: {},
         content: textareaContent.value,
         relevant: relevant,
         date: new Date().getTime()
