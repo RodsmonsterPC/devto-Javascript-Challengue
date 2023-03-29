@@ -22,9 +22,9 @@ const createForm = ()=>{
         Tag: TagArray,
         content: textareaContent.value,
         relevant: relevant,
-        date: new Date().getTime()/1000
+        date: new Date().getTime()
         }
-
+    console.log(postInfo)
     createPost(postInfo)
 } 
 
