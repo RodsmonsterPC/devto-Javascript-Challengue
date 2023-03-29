@@ -54,9 +54,7 @@ const getCommentList = async () => {
                 class="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
-                <li>
-                  <a class="dropdown-item" href="#">Edit</a>
-                </li>
+
                 <li>
                   <a class="dropdown-item" href="#">Delete</a>
                 </li>
