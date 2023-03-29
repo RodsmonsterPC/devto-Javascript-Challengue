@@ -68,8 +68,8 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
   spanName.append(h5Name, spanDateCreate);
 
   spanDateCreate.textContent = `${moment(dateCreate).format(
-    "MM/DD"
-  )} (${moment(dateCreate).endOf("day").fromNow()})`;
+    "DD/MM/YY"
+  )} (${moment(dateCreate).startOf("hour").fromNow()})`;
 
   divInfo.append(imgData, spanName);
 
