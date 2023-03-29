@@ -51,9 +51,6 @@ const createTag = () =>{
 
 
 
-
-
-
 // //remove tag
 const removeTag = () =>{
     let close = document.querySelectorAll('.close')
@@ -64,7 +61,6 @@ const removeTag = () =>{
         })
     })
 }
-
 
 
 const addTag = (e) =>{
