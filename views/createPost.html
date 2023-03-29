@@ -8,6 +8,7 @@
     <title>New Post</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
+
 <body>
     <header>
         <nav class="bg-transparent">
@@ -24,6 +25,40 @@
                     <button type="button" class="btn btn-hover">Preview</button>
                     <button type="button" class="btn-close" aria-label="Close" id="button1" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
                     <!-- Modal -->
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">You have unsaved changes</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                You've made changes to your post. Do you want to navigate to leave this page?
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col-8 col-sm-6">
+                                                <button type="button" class="btn btn-danger">Yes, leave the page</button>
+                                                
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">No, keep editing</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -61,6 +96,7 @@
          
         </nav>
     </header>
+
   <section class="container post-container">
     <form action="" class="post-wrapper rounded p-3" id="list-input">
         <div class="form-group">

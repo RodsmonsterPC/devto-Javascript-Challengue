@@ -20,11 +20,12 @@ const createForm = ()=>{
         image: inputImage.value,
         author: inputAuthor.value,
         Tag: TagArray,
+        comments: {},
         content: textareaContent.value,
         relevant: relevant,
-        date: new Date().getTime()/1000
+        date: new Date().getTime()
         }
-
+    console.log(postInfo)
     createPost(postInfo)
 } 
 
@@ -36,7 +37,7 @@ const createTag = () =>{
         let li = document.createElement('li')
         li.classList.add('tag-item')
         let span = document.createElement('span')
-        span.textContent = tag
+        span.textContent = `#${tag}`
         let close = document.createElement('span')
         close.setAttribute('class', 'close')
         close.innerHTML = '&times;'
@@ -51,9 +52,6 @@ const createTag = () =>{
 
 
 
-
-
-
 // //remove tag
 const removeTag = () =>{
     let close = document.querySelectorAll('.close')
@@ -64,7 +62,6 @@ const removeTag = () =>{
         })
     })
 }
-
 
 
 const addTag = (e) =>{
