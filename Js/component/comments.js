@@ -6,12 +6,15 @@ let btn = document.getElementById('comment-btn');
 let comment = document.getElementById('text-comment');
 let userName = document.getElementById('name-comment');
 let wrapper = document.getElementById('comment-wrapper');
+let commentLen = document.getElementById('comment-length');
 wrapper.innerHTML = '';
 const getCommentList = async () => {
     wrapper.innerHTML = '';
     let commentList = await getComment(key);
     let newArray =  Object.values(commentList);
-    console.log(newArray);
+    let counter = newArray.length;
+  
+
     newArray.forEach((item) => {
         let div = document.createElement('div');
         div.classList.add('comment');
@@ -91,10 +94,9 @@ const getCommentList = async () => {
       </div>
         `
         wrapper.appendChild(div);
-    }
-    )
-
-
+    })
+    commentLen.textContent = `(${counter})`
+    
 }
 
 getCommentList();
