@@ -295,6 +295,10 @@ footer ul li {
   margin-bottom: 2rem;
 }
 
+.btn-hover:hover {
+  background-color: rgba(45, 151, 245, 0.7568627451);
+}
+
 .post-container {
   background-color: #F5F5F5;
   padding: 2rem;

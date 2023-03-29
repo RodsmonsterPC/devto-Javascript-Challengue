@@ -1,4 +1,9 @@
+.btn-hover {
+    &:hover{
+        background-color: #2d97f5c1;
 
+    }
+  }
 
 .post-container{
     background-color: #F5F5F5;
@@ -89,6 +94,11 @@
                 }
             }
         }
+
+
+
+
+
         .tag-alert{
             display: none;
             border: 1px solid #d7d6d6;
