@@ -37,7 +37,7 @@
                     </div>
                  */
 
-const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
+const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost) => {
   let divContainer = document.createElement("div");
   divContainer.classList.add(..."card shadow mb-2".split(" "));
 
@@ -49,6 +49,21 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
 
   let divBody = document.createElement("div");
   divBody.classList.add("card-body");
+
+  //divInfoContent
+  let divInfoContent = document.createElement('div')
+  divInfoContent.classList.add(..."d-flex justify-content-between".split(" "));
+
+  let deleteBtn = document.createElement('button')
+  deleteBtn.classList.add(..."btn-delete".split(" "));
+  deleteBtn.innerHTML = "&times;"
+  deleteBtn.addEventListener('click',(e)=>{
+    deletePost(key)
+    e.target.parentElement.parentElement.remove()
+  })
+
+
+
 
   let divInfo = document.createElement("div");
   divInfo.classList.add(..."d-flex mb-3 align-items-center".split(" "));
@@ -72,6 +87,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
   )} (${moment(dateCreate).startOf("hour").fromNow()})`;
 
   divInfo.append(imgData, spanName);
+  divInfoContent.append(divInfo,deleteBtn)
 
   let divTags = document.createElement("div");
 
@@ -106,18 +122,22 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
   divInfoReactions.classList.add(..."d-flex align-items-center".split(" "));
 
   let spanReactions = document.createElement("span");
+  let spanTextReactions = document.createElement("span")
   spanReactions.classList.add(..."d-flex align-items-center me-3".split(" "));
-  spanReactions.textContent = "5 Reactions";
+  spanTextReactions.textContent = "5 Reactions";
   let imgReaction = document.createElement("img");
   imgReaction.setAttribute("src", "../assets/heart-icon.svg");
 
-  spanReactions.appendChild(imgReaction);
+  spanReactions.append(imgReaction,spanTextReactions);
 
   let spanCommnets = document.createElement("span");
+  let spanTextComments = document.createElement("span")
+  spanTextComments.textContent = "2 comments";
+
   let imgComment = document.createElement("img");
   imgComment.setAttribute("src", "../assets/comment-icon.svg");
 
-  spanCommnets.appendChild(imgComment);
+  spanCommnets.append(imgComment,spanTextComments)
 
   divInfoReactions.append(spanReactions, spanCommnets);
 
@@ -135,7 +155,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,dataPost) => {
 
   divReactions.append(divInfoReactions, divCreationTime);
 
-  divBody.append(divInfo, divTags, divReactions);
+  divBody.append(divInfoContent, divTags, divReactions);
   divContainer.append(cover,divBody);
 
   return divContainer;

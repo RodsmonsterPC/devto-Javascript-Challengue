@@ -87,6 +87,23 @@
     display: none;
   }
 }
+.btn-home {
+  background-color: transparent;
+  border: 1px solid rgb(59, 73, 223);
+}
+.btn-home a {
+  text-decoration: none;
+  color: rgb(59, 73, 223);
+}
+.btn-home:hover {
+  background-color: rgb(59, 73, 223);
+  text-decoration: underline;
+  color: rgb(247, 247, 247);
+}
+.btn-home:hover a {
+  color: white;
+}
+
 .btn-login {
   background: transparent;
   border: 0px;
@@ -178,6 +195,18 @@ footer ul li {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: #e3e3e3;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.btn-delete:hover {
+  cursor: pointer;
+  color: rgb(80, 99, 255);
 }
 
 #container-wrapper .card:not(:first-of-type) .card-img-cover {

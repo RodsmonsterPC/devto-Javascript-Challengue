@@ -1,4 +1,4 @@
-import { getPost} from "./api/api.js";
+import { getPost,deletePost} from "./api/api.js";
 import { postPrint } from "./component/modulePost.js";
 
 
@@ -30,11 +30,11 @@ const printCard = async (filterBy) => {
         if (filterBy == 'relevant'){  
             if (dataPost[key].relevant) {
                 let {Tag, author, date, title} = dataPost[key]
-                col = postPrint(author, date, title, Tag, key, dataPost)
+                col = postPrint(author, date, title, Tag, key,  deletePost)
             }
              
         } else {
-            col = postPrint(author, date, title, Tag,key,dataPost)
+            col = postPrint(author, date, title, Tag,key, deletePost)
         }
 // end relevant filter        
         

@@ -36,7 +36,7 @@ const createTag = () =>{
         let li = document.createElement('li')
         li.classList.add('tag-item')
         let span = document.createElement('span')
-        span.textContent = tag
+        span.textContent = `#${tag}`
         let close = document.createElement('span')
         close.setAttribute('class', 'close')
         close.innerHTML = '&times;'
