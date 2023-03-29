@@ -9,7 +9,7 @@ const printCard = async (filterBy) => {
     let filter = input.value.toUpperCase()
     let post = await getPost()
     let dataPost = post.data
-  
+//   start latest filter
     if (filterBy == 'latest'){
         let dataArray = Object.values(dataPost)
         let sortedPosts = []
@@ -22,12 +22,12 @@ const printCard = async (filterBy) => {
         sortedPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
         dataPost = Object.assign({}, sortedPosts)    
     }
-   
+//    end latest filter
 
     for (let key in dataPost){
         let {Tag, author, comment, content, date, image, relevant, title}  = dataPost[key] 
         let col;
-
+// start relevant filter
         if (filterBy == 'relevant'){  
             if (dataPost[key].relevant) {
                 let {Tag, author, date, title} = dataPost[key]
@@ -37,7 +37,7 @@ const printCard = async (filterBy) => {
         } else {
             col = postPrint(author, date, title, Tag,key,dataPost)
         }
-        
+// end relevant filter        
         
         // let newText = document.createElement("h3")
         // newText.innerText = 'No se encontro'
@@ -46,6 +46,8 @@ const printCard = async (filterBy) => {
         }
     }
 }
+
+// start anchor events
 
 let relevantWrapper = document.getElementById('relevant')
 relevantWrapper.addEventListener("click", (event) => {
@@ -62,6 +64,8 @@ latestWrapper.addEventListener("click", (event) => {
     wrapper.innerHTML = '' 
     printCard('latest')
 })
+
+// end anchor events
 
 let input = document.getElementById('search-input')
 input.addEventListener('keyup', (event) => {
