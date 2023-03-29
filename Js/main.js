@@ -1,5 +1,4 @@
 import { getPost} from "./api/api.js";
-
 import { postPrint } from "./component/modulePost.js";
 
 
@@ -44,6 +43,7 @@ const printCard = async (filterBy) => {
         if(title.toUpperCase().indexOf(filter) > -1){
             col != null ? wrapper.append(col) : null
         }
+
     }
 }
 
@@ -76,8 +76,30 @@ input.addEventListener('keyup', (event) => {
 
 
 
+
 printCard()
 
+//Login
+let buttonLogin = document.querySelectorAll(".btn-login");
 
+buttonLogin.forEach((element) => {
+  element.addEventListener("click", () =>
+    window.open("../views/login.html", "_self")
+  );
+});
+
+const signUp = () => {
+  localStorage.getItem("token")
+    ? window.open("../views/home.html", "_self")
+    : window.open("../index.html", "_self");
+};
+
+let signOut = document.querySelector("#btn-signOut");
+
+signOut.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  signUp();
+});
+//end-rodo
 
 

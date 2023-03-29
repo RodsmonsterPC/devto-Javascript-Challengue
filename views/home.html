@@ -30,10 +30,22 @@
                 </div>
 
                 <div>
-                    <button type="button" class="btn btn-outline-primary d-none d-lg-inline">Create Post</button>
+                    <button type="button" class="btn btn-outline-primary d-none d-lg-inline mx-3">
+                        <a href="./createPost.html">Create Post</a>
+                    </button>
+
                     <img src="../assets/search-icon.svg" alt="search" class="iconsearch d-lg-none" width="24" height="24">
                     <img src="../assets/notification-icon.svg" alt="bell" class="iconbell" width="24" height="24">
-                    <img src="../assets/profile-avatar.webp" alt="profile avatar" width="40" height="40" class="rounded-circle">
+                    <div class="btn-group mx-2" role="group">
+                        <button type="button" class="btn btn-primary dropdown-toggle btn-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../assets/profile-avatar.webp" alt="profile avatar" width="40" height="40" class="rounded-circle">
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a id="btn-signOut" class="dropdown-item" href="#">Sign Out</a></li>
+                          
+                        </ul>
+                      </div>
+                    
                 </div>
             </div>
          
@@ -352,7 +364,7 @@
                </div>
                <div>
                 <div class="card" >
-                    <img src="../assets/image-bg-card.png" class="card-img-top" alt="...">
+                    <img src="../assets/image-bg-card.png" class="card-img-top-login" alt="...">
                     <div class="card-body">
                       <h6 class="card-title fs-6">Calling all early-career developers & coding mentors!</h6>
                       <p class="card-text">Join CodeNewbie Community: a supportive space for coding newbies to connect & express themselves.</p>

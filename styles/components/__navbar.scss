@@ -1,11 +1,37 @@
-@import "../Modules/_globals";
-
-@media only screen and (min-width: 992px){
-    .input-group, .btn-outline-primary {
-        display: none;
-    }
+@media only screen and (min-width: 992px) {
+  .input-group,
+  .btn-outline-primary {
+    display: none;
+  }
 }
 
-nav {
-    background-color: green;
+.btn-login {
+  background: transparent;
+  border: 0px;
+  color: rgb(64, 64, 64);
+  &:hover {
+    text-decoration: underline;
+    background: rgb(59, 73, 223, 10%);
+    color: rgb(59, 73, 223);
+  }
+}
+
+.btn-create {
+  border: 1px solid rgb(59, 73, 223);
+  color: rgb(59, 73, 223);
+  &:hover {
+    text-decoration: underline;
+    color: white;
+    background-color: rgb(59, 73, 223);
+    border: 1px solid rgb(59, 73, 223);
+  }
+}
+
+.btn-profile {
+  background-color: transparent;
+  border: none;
+  &:hover {
+    background-color: transparent;
+    border: none;
+  }
 }
