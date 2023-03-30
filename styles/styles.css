@@ -312,8 +312,9 @@ footer ul li {
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-  height: 75vh;
-  width: 50rem;
+  height: 70vh;
+  width: 100%;
+  max-width: 50rem;
 }
 .post-container .post-wrapper .input-element {
   margin-bottom: 1rem;
@@ -387,6 +388,23 @@ footer ul li {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   padding: 0rem 1rem;
   color: #535353;
+}
+@media screen and (min-width: 320px) {
+  .post-container .post-wrapper {
+    width: 100%;
+    padding: 1rem;
+  }
+  .post-container .post-wrapper #key-title {
+    font-size: 2rem;
+  }
+  .post-container .post-wrapper #key-content {
+    height: 40vh;
+  }
+  .post-container .post-wrapper .tag-box #tag-list .tag-item, .post-container .post-wrapper .tag-box #preview-tag-list .tag-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+  }
 }
 
 * {
