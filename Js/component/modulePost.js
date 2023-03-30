@@ -59,7 +59,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, co
   deleteBtn.innerHTML = "&times;"
   deleteBtn.addEventListener('click',(e)=>{
     deletePost(key)
-    e.target.parentElement.parentElement.remove()
+    e.target.parentNode.parentNode.parentNode.remove()
   })
 
 
