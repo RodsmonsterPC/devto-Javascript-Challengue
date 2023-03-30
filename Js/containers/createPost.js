@@ -10,12 +10,14 @@ let btn = document.getElementById('add-button');
     let inputImage = document.getElementById('key-image')
     let inputRelevant = document.getElementById('key-relevant')
     let tags = []
+    let postInfo = {}
+    
 
 
 const createForm = ()=>{
     let TagArray = Object.values(tags)
     let relevant = inputRelevant.type === 'checkbox' ? inputRelevant.checked : inputRelevant.value
-    let postInfo = {
+    postInfo = {
         title: inputTitle.value,
         image: inputImage.value,
         author: inputAuthor.value,
@@ -90,9 +92,72 @@ inputTag.addEventListener('keyup', addTag)
 btn.addEventListener('click', createForm)
 
 
-const myModal = document.getElementById('myModal')
-const myInput = document.getElementById('myInput')
+// const myModal = document.getElementById('myModal')
+// const myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', () => {
-  myInput.focus()
-})
+// myModal.addEventListener('shown.bs.modal', () => {
+//   myInput.focus()
+// })
+
+let leaveBtn = document.getElementById('leave-btn')
+
+leaveBtn.addEventListener('click', () => {
+    window.open('../../views/home.html', '_self')
+}
+)
+
+
+let preview = document.getElementById('id-preview');
+let edit = document.getElementById('id-edit');
+
+
+edit.addEventListener('click', () => {
+    document.getElementById('preview').style.display = 'none'
+    document.getElementById('list-input').style.display = 'block'
+}
+)
+
+let previewTitle = document.getElementById('preview-title')
+let previewImage = document.getElementById('preview-image')
+let previewAuthor = document.getElementById('preview-author')
+let previewTagList = document.getElementById('preview-tag-list')
+let previewContent = document.getElementById('preview-content')
+let previewRelevant = document.getElementById('preview-relevant')
+
+preview.addEventListener('click', () => {
+    document.getElementById('list-input').style.display = 'none'
+    document.getElementById('preview').style.display = 'block'
+    
+    let TagArrays = Object.values(tags)
+    let relevants = inputRelevant.type === 'checkbox' ? inputRelevant.checked : inputRelevant.value
+    postInfo = {
+        title: inputTitle.value,
+        image: inputImage.value,
+        author: inputAuthor.value,
+        Tag: TagArrays,
+        comments: {},
+        content: textareaContent.value,
+        relevant: relevants,
+        date: new Date().getTime()
+    }
+    let {title, image, author, Tag, content, relevant} = postInfo
+    previewTitle.innerHTML = title
+    previewImage.innerHTML = image
+    previewAuthor.innerHTML = author
+    previewContent.innerHTML = content
+    previewRelevant.innerHTML = relevants 
+    previewTagList.innerHTML = ''
+    Tag.forEach(tag => {
+        let li = document.createElement('li')
+        li.classList.add('tag-item')
+        let span = document.createElement('span')
+        span.textContent = `#${tag}`
+        li.append(span)
+        previewTagList.appendChild(li)
+    }
+    )
+
+}
+)
+
+

@@ -35,6 +35,16 @@ const getComment = async (id) => {
   return data;
 };
 
+const deleteComment = async (id,key) => {
+  let response = await fetch(
+    `https://devto-9f944-default-rtdb.firebaseio.com/data/${id}/comments/${key}/.json`,
+    { method: "DELETE" }
+  );
+  let data = response.json();
+  return data;
+};
+
+
 
 const createPost = async (postInfo) => {
   let response = await fetch(
@@ -55,4 +65,4 @@ const deletePost = async (id) => {
   return data;
 };
 
-export { getPost,getPostId,createPost,deletePost,createComment,getComment};
+export { getPost,getPostId,createPost,deletePost,createComment,getComment,deleteComment};

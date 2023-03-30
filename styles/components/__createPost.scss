@@ -10,7 +10,12 @@
     padding: 2rem;
     width: 100%;
 
-   
+    #preview{
+        display: none;
+
+
+    }
+
 
 
 
@@ -49,7 +54,7 @@
         .tag-box{
             display: flex;
             
-            #tag-list{
+            #tag-list, #preview-tag-list{
                 display: flex;
                 list-style: none;
                  
