@@ -1,8 +1,8 @@
-import { createComment, getComment} from '../api/api.js';
+import { createComment, getComment,deleteComment} from '../api/api.js';
 import {createCommentCard} from './modulePost.js';
 
 let urlParams = new URLSearchParams(window.location.search);
-let key = urlParams.get("postId");
+let postIds = urlParams.get("postId");
 
 let btn = document.getElementById('comment-btn');
 let comment = document.getElementById('text-comment');
@@ -13,16 +13,15 @@ wrapper.innerHTML = '';
 
 const getCommentList = async () => {
     wrapper.innerHTML = '';
-    let commentList = await getComment(key);
-    let newArray =  Object.values(commentList);
+    let commentList = await getComment(postIds);
+    let newArray = Object.values(commentList);
     let counter = newArray.length;
-  
 
-    newArray.forEach((item) => {
-       let {name,comment,date} = item
-       wrapper.appendChild(createCommentCard(name,comment,date))
-
-    })
+    for(let key in commentList){
+        let{comment,name,date} = commentList[key];
+        console.log(commentList[key])
+        wrapper.appendChild(createCommentCard(name,comment,date,postIds,key,deleteComment))
+    }
     commentLen.textContent = `(${counter})`
     
 }
@@ -35,7 +34,7 @@ const createCommetForm = () => {
         name: userName.value,
         comment: comment.value,
     }
-    createComment(commentArray, key)
+    createComment(commentArray, postIds)
 }
 
 btn.addEventListener('click', () => {

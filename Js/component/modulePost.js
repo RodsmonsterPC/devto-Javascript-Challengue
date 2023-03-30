@@ -160,7 +160,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, co
 
   let spanCommnets = document.createElement("span");
   let spanTextComments = document.createElement("span")
-  let commentArray = Object.values(comments)
+  let commentArray = comments ? Object.values(comments) : []
   let commentCount = commentArray.length
   
   spanTextComments.textContent = `${commentCount} Comments`
@@ -192,7 +192,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, co
   return divContainer;
 };
 
-const createCommentCard = (commentName,commentText, commentDate) => {
+const createCommentCard = (commentName,commentText, commentDate,id,key,deleteComment) => {
   let divContainer = document.createElement("div");
   divContainer.classList.add("comment");
 
@@ -256,6 +256,14 @@ const createCommentCard = (commentName,commentText, commentDate) => {
   let anchor = document.createElement("a");
   anchor.classList.add("dropdown-item");
   anchor.textContent = "Delete";
+
+  anchor.addEventListener("click", (e) => {
+    deleteComment(id,key);
+    e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+   
+
+  });
+
 
   liList.appendChild(anchor);
 
