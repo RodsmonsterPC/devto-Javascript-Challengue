@@ -37,33 +37,38 @@
                     </div>
                  */
 
-const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, comments) => {
+const postPrint = (
+  nameInfo,
+  dateCreate,
+  postTitle,
+  postTags,
+  key,
+  deletePost,
+  comments
+) => {
   let divContainer = document.createElement("div");
   divContainer.classList.add(..."card shadow mb-2".split(" "));
 
-  let cover = document.createElement('img')
+  let cover = document.createElement("img");
 
-  cover.classList.add("card-img-cover")
+  cover.classList.add("card-img-cover");
 
-  cover.setAttribute('src','https://picsum.photos/200/100')
+  cover.setAttribute("src", "https://picsum.photos/200/100");
 
   let divBody = document.createElement("div");
   divBody.classList.add("card-body");
 
   //divInfoContent
-  let divInfoContent = document.createElement('div')
+  let divInfoContent = document.createElement("div");
   divInfoContent.classList.add(..."d-flex justify-content-between".split(" "));
 
-  let deleteBtn = document.createElement('button')
+  let deleteBtn = document.createElement("button");
   deleteBtn.classList.add(..."btn-delete".split(" "));
-  deleteBtn.innerHTML = "&times;"
-  deleteBtn.addEventListener('click',(e)=>{
-    deletePost(key)
-    e.target.parentElement.parentElement.remove()
-  })
-
-
-
+  deleteBtn.innerHTML = "&times;";
+  deleteBtn.addEventListener("click", (e) => {
+    deletePost(key);
+    e.target.parentElement.parentElement.remove();
+  });
 
   let divInfo = document.createElement("div");
   divInfo.classList.add(..."d-flex mb-3 align-items-center".split(" "));
@@ -87,7 +92,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, co
   )} (${moment(dateCreate).startOf("hour").fromNow()})`;
 
   divInfo.append(imgData, spanName);
-  divInfoContent.append(divInfo,deleteBtn)
+  divInfoContent.append(divInfo, deleteBtn);
 
   let divTags = document.createElement("div");
 
@@ -122,7 +127,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, co
   divInfoReactions.classList.add(..."d-flex align-items-center".split(" "));
 
   let spanReactions = document.createElement("span");
-  let spanTextReactions = document.createElement("span")
+  let spanTextReactions = document.createElement("span");
   spanReactions.classList.add(..."d-flex align-items-center me-3".split(" "));
   spanTextReactions.textContent = "0 Reactions";
   let imgReaction = document.createElement("img");
@@ -133,9 +138,7 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, co
     //loca
     let reactionCount = parseInt(spanTextReactions.textContent);
     //save in local storage
-    let reactionArray = JSON.parse(localStorage.getItem("reactionArray")) || {
-      
-    };
+    let reactionArray = JSON.parse(localStorage.getItem("reactionArray")) || {};
     reactionArray.push(key);
     localStorage.setItem("reactionArray", JSON.stringify(reactionArray));
 
@@ -145,32 +148,27 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, co
     spanTextReactions.textContent = `${reactionCount + 1} Reactions`;
 
     //save reaction in local storage
-    let reactionObject = JSON.parse(localStorage.getItem("reactionObject")) || {
-
-    };
+    let reactionObject =
+      JSON.parse(localStorage.getItem("reactionObject")) || {};
     reactionObject[key] = reactionCount + 1;
     localStorage.setItem("reactionObject", JSON.stringify(reactionObject));
-
-  
-
-
   });
 
-  spanReactions.append(imgReaction,spanTextReactions);
+  spanReactions.append(imgReaction, spanTextReactions);
 
-  let spanCommnets = document.createElement("span");
-  let spanTextComments = document.createElement("span")
-  let commentArray = comments ? Object.values(comments) : []
-  let commentCount = commentArray.length
-  
-  spanTextComments.textContent = `${commentCount} Comments`
+  // let spanCommnets = document.createElement("span");
+  // let spanTextComments = document.createElement("span")
+  // let commentArray = comments ? Object.values(comments) : []
+  // let commentCount = commentArray.length
 
-  let imgComment = document.createElement("img");
-  imgComment.setAttribute("src", "../assets/comment-icon.svg");
+  // spanTextComments.textContent = `${commentCount} Comments`
 
-  spanCommnets.append(imgComment,spanTextComments)
+  // let imgComment = document.createElement("img");
+  // imgComment.setAttribute("src", "../assets/comment-icon.svg");
 
-  divInfoReactions.append(spanReactions, spanCommnets);
+  // spanCommnets.append(imgComment,spanTextComments)
+
+  divInfoReactions.appendChild(spanReactions); //,spanCommnets
 
   let divCreationTime = document.createElement("div");
 
@@ -187,12 +185,19 @@ const postPrint = (nameInfo, dateCreate, postTitle, postTags, key,deletePost, co
   divReactions.append(divInfoReactions, divCreationTime);
 
   divBody.append(divInfoContent, divTags, divReactions);
-  divContainer.append(cover,divBody);
+  divContainer.append(cover, divBody);
 
   return divContainer;
 };
 
-const createCommentCard = (commentName,commentText, commentDate,id,key,deleteComment) => {
+const createCommentCard = (
+  commentName,
+  commentText,
+  commentDate,
+  id,
+  key,
+  deleteComment
+) => {
   let divContainer = document.createElement("div");
   divContainer.classList.add("comment");
 
@@ -222,7 +227,6 @@ const createCommentCard = (commentName,commentText, commentDate,id,key,deleteCom
   let spanDate = document.createElement("span");
   spanDate.classList.add(..."fs-6 fw-light ms-3".split(" "));
   spanDate.textContent = `${moment(commentDate).fromNow()}`;
-
 
   h5Name.appendChild(spanDate);
 
@@ -258,12 +262,9 @@ const createCommentCard = (commentName,commentText, commentDate,id,key,deleteCom
   anchor.textContent = "Delete";
 
   anchor.addEventListener("click", (e) => {
-    deleteComment(id,key);
+    deleteComment(id, key);
     e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
-   
-
   });
-
 
   liList.appendChild(anchor);
 
@@ -279,13 +280,13 @@ const createCommentCard = (commentName,commentText, commentDate,id,key,deleteCom
 
   creationInfoContainer.append(createInfo, commentText);
 
-  divInfo.append(imgUser,creationInfoContainer);
+  divInfo.append(imgUser, creationInfoContainer);
 
   let divReactions = document.createElement("div");
   divReactions.classList.add(..."ms-5 ps-2 mb-4 d-flex".split(" "));
 
   let spanLikes = document.createElement("span");
-  let spanTextLikes = document.createElement("span")
+  let spanTextLikes = document.createElement("span");
   spanTextLikes.textContent = "1 like";
 
   let imgLike = document.createElement("img");
@@ -295,11 +296,11 @@ const createCommentCard = (commentName,commentText, commentDate,id,key,deleteCom
   imgLike.setAttribute("width", "24");
   imgLike.setAttribute("height", "24");
 
-  spanLikes.append(imgLike,spanTextLikes);
+  spanLikes.append(imgLike, spanTextLikes);
 
   let spanComment = document.createElement("span");
   spanComment.classList.add("ms-3");
-  let spanTextComment = document.createElement("span")
+  let spanTextComment = document.createElement("span");
   spanTextComment.textContent = "Comment";
 
   let imgComment = document.createElement("img");
@@ -309,7 +310,7 @@ const createCommentCard = (commentName,commentText, commentDate,id,key,deleteCom
   imgComment.setAttribute("width", "24");
   imgComment.setAttribute("height", "24");
 
-  spanComment.append(imgComment,spanTextComment);
+  spanComment.append(imgComment, spanTextComment);
 
   divReactions.append(spanLikes, spanComment);
 

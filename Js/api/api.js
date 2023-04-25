@@ -1,12 +1,27 @@
+const URL_BASE = "http://localhost:8081";
+const authToken =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDc0M2E1MzQxNTAzYjMyODk2MzAzNiIsImlhdCI6MTY4MjM5MjE4NCwiZXhwIjoxNjgyNDc4NTg0fQ.LcJiH7D7cGVeS4N7rSQSEBz9898AHvOsPF3LFRbPWP0";
+
+const token = sessionStorage.setItem("token", authToken);
+
 const getPost = async () => {
-  let response = await fetch(
-    `https://devto-9f944-default-rtdb.firebaseio.com/.json`
-  );
+  try {
+    let response = await fetch(`${URL_BASE}/posts`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-  let data = response.json();
+    let data = await response.json();
 
-  return data;
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
+
+//Fire Base
 
 const getPostId = async (id) => {
   let response = await fetch(
@@ -35,7 +50,7 @@ const getComment = async (id) => {
   return data;
 };
 
-const deleteComment = async (id,key) => {
+const deleteComment = async (id, key) => {
   let response = await fetch(
     `https://devto-9f944-default-rtdb.firebaseio.com/data/${id}/comments/${key}/.json`,
     { method: "DELETE" }
@@ -43,8 +58,6 @@ const deleteComment = async (id,key) => {
   let data = response.json();
   return data;
 };
-
-
 
 const createPost = async (postInfo) => {
   let response = await fetch(
@@ -65,4 +78,12 @@ const deletePost = async (id) => {
   return data;
 };
 
-export { getPost,getPostId,createPost,deletePost,createComment,getComment,deleteComment};
+export {
+  getPost,
+  getPostId,
+  createPost,
+  deletePost,
+  createComment,
+  getComment,
+  deleteComment,
+};
