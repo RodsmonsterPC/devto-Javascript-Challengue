@@ -1,3 +1,5 @@
+import {loginUser} from "../api/api.js"
+
 let inputsValue = document.querySelectorAll("#form-info input");
 let buttonContinue = document.querySelector("#btn-continue");
 
@@ -12,12 +14,12 @@ inputsValue.forEach((fieldsData) => {
   });
 });
 
-const submitForm = () => {
-  let { email, password } = data;
-  email && password
-    ? (localStorage.setItem("token", "userLogin"),
-      window.open("../../views/home.html", "_self"))
-    : alert("Llene todos los campos");
+const submitForm = async() => {
+ 
+  const tokenData = await loginUser(data)
+  const tokenObject = tokenData.data.token
+  sessionStorage.setItem("token",  tokenObject)
+  window.open("../../views/home.html", "_self")
 };
 
 const resetForm = () => {
@@ -28,7 +30,8 @@ const resetForm = () => {
 };
 
 buttonContinue.addEventListener("click", () => {
-  submitForm();
-  resetForm();
+  loginUser(data) 
+  submitForm()
+  // resetForm();
 
 });

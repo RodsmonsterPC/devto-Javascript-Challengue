@@ -1,50 +1,16 @@
-/*            <div class="card shadow mb-2" > _divContainer
-                        <div class="card-body"> _divBody
-                              <div class="d-flex mb-3 align-items-center"> _divInfo
-                                    <img class="rounded-circle border object-fit-cover me-3" src="https://i.pravatar.cc/" style="width:40px;">
-                                    <span class="d-flex  flex-column">
-                                    <h5 class="fs-6 fw-bold">Kurt James</h5>
-                                    <span class="fs-6 fw-light">Feb 1 (13 hours ago)</span>
-                                    </span>
-                                </div>
-                              <div> divTags
-                                    <h1 class="card-title"><a href="">Playwright Tips From the Checkly Community</a> </h1>
-                                    <ul class="list-tag__main">
-                                        <li class="">#news</li>
-                                        <li class="">#javascript</li>
-                                        <li class="">#webdev</li>
-                                        <li class="">#gatsby</li>
-                                    </ul>
-                              </div>
-                              <div class="d-flex justify-content-between w-100"> divReactions
-                                <div class="d-flex align-items-center" > divInfoReactions
-                                    <span class="d-flex align-items-center me-3">
-                                        <img src="../assets/heart-icon.svg" alt="">
-                                        5 Reactions
-                                    </span>
-                                    <span class="d-flex align-items-center" >
-                                        <img src="../assets/comment-icon.svg" alt="">
-                                        6 Comments
-                                    </span>
-                                </div>
-                            
-                                <div> divCreationTime
-                                    <span class="d-flex align-items-center">3 min <img src="../assets/save-icon.svg" alt=""></span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                 */
 
 const postPrint = (
   nameInfo,
   dateCreate,
-  postTitle,
   postTags,
   key,
+  users,
   deletePost,
-  comments
+  getUserId,
+  isLogged,
+  userId,
+  readTime
+  
 ) => {
   let divContainer = document.createElement("div");
   divContainer.classList.add(..."card shadow mb-2".split(" "));
@@ -64,11 +30,30 @@ const postPrint = (
 
   let deleteBtn = document.createElement("button");
   deleteBtn.classList.add(..."btn-delete".split(" "));
-  deleteBtn.innerHTML = "&times;";
-  deleteBtn.addEventListener("click", (e) => {
-    deletePost(key);
-    e.target.parentElement.parentElement.remove();
+  deleteBtn.innerHTML = isLogged === userId ? "&times;" : "";
+  deleteBtn.addEventListener('click',(e)=>{
+    deletePost(key)
+    e.target.parentElement.parentElement.remove()
+  })
+
+  let editBtn = document.createElement("span");
+  let iconEdit = document.createElement("img");
+  iconEdit.setAttribute("src", "../../assets/edit-icon.svg");
+  iconEdit.setAttribute("style", "width:30px; height:30px");
+  editBtn.classList.add(..."btn-edit".split(" "));
+  editBtn.innerHTML = isLogged === userId ? iconEdit.outerHTML : "";
+  editBtn.addEventListener("click", (e) => {
+     window.location.href = `./createPost.html?postId=${key}`;
+    
   });
+    
+
+  let divUpdate = document.createElement("div");
+  divUpdate.classList.add(..."d-flex align-items-center".split(" "));
+
+  divUpdate.append(editBtn, deleteBtn);
+
+
 
   let divInfo = document.createElement("div");
   divInfo.classList.add(..."d-flex mb-3 align-items-center".split(" "));
@@ -83,7 +68,12 @@ const postPrint = (
   let spanName = document.createElement("span");
   spanName.classList.add(..."d-flex flex-column".split(" "));
   let h5Name = document.createElement("h5");
-  h5Name.textContent = nameInfo;
+
+
+    h5Name.textContent = users
+
+
+
   let spanDateCreate = document.createElement("span");
   spanName.append(h5Name, spanDateCreate);
 
@@ -92,7 +82,7 @@ const postPrint = (
   )} (${moment(dateCreate).startOf("hour").fromNow()})`;
 
   divInfo.append(imgData, spanName);
-  divInfoContent.append(divInfo, deleteBtn);
+  divInfoContent.append(divInfo, divUpdate);
 
   let divTags = document.createElement("div");
 
@@ -101,7 +91,7 @@ const postPrint = (
 
   let anchor = document.createElement("a");
   anchor.setAttribute("href", `./detailPost.html?postId=${key}`);
-  anchor.textContent = postTitle;
+  anchor.textContent = nameInfo;
 
   h1Title.appendChild(anchor);
 
@@ -174,7 +164,7 @@ const postPrint = (
 
   let spanTime = document.createElement("span");
   spanTime.classList.add(..."d-flex align-items-center".split(" "));
-  spanTime.textContent = "3 min";
+  spanTime.textContent = `${readTime} min read`
 
   let imageContent = document.createElement("img");
   imageContent.setAttribute("src", "../assets/save-icon.svg");

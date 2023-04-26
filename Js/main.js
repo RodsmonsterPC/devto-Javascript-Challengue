@@ -1,4 +1,4 @@
-import { getPost, deletePost } from "./api/api.js";
+import { getPost, deletePost, getUserId, getpayloadFromToken} from "./api/api.js";
 import { postPrint } from "./component/modulePost.js";
 
 let wrapper = document.getElementById("container-wrapper");
@@ -7,37 +7,64 @@ const printCard = async (filterBy) => {
   let filter = input.value.toUpperCase();
   let post = await getPost();
   let dataPost = post.data.post;
+
+
   console.log(dataPost);
-  //   start latest filter
-  //   if (filterBy == "latest") {
-  //     let dataArray = Object.values(dataPost);
-  //     let sortedPosts = [];
+    // start latest filter
+    if (filterBy == "latest") {
+      let sortedPosts = [];
 
-  //     dataArray.forEach((post) => {
-  //       if (post.date) sortedPosts.push(post);
-  //     });
+      dataPost.forEach((post) => {
+        if (post.date) {
+          sortedPosts.push(post);
+        }
+      });
 
-  //     sortedPosts.sort(
-  //       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  //     );
-  //     dataPost = Object.assign({}, sortedPosts);
-  //   }
-  //    end latest filter
+      sortedPosts.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+
+      );
+        dataPost = sortedPosts;
+
+    }  else {
+      dataPost = dataPost;
+    }
+
+
+
+    // end latest filter
 
   for (let post of dataPost) {
-    let { tags, name, postBody, date, image, relevant, _id } = post;
+    
+    let { tags, name, date, image, relevant, _id,userName,user, postBody} = post;
 
-    console.log(post);
+  //save user in a variable to use it in the postPrint function 
+  const token = sessionStorage.getItem("token");
+  const isLogged = getpayloadFromToken(token);
+
+
+  console.log(postBody);
+  //calculate to read time of the post
+  let wordsPerMinute = 200;
+  let noOfWords = postBody.split(/\s/g).length;
+  let minutes = noOfWords / wordsPerMinute;
+  let readTime = Math.ceil(minutes);
+
+
+  console.log(readTime);
+
+
+
     let col;
 
     // start relevant filter
     if (filterBy == "relevant") {
       if (post.relevant) {
         let { tags, name, date } = post;
-        col = postPrint(name, date, postBody, tags, _id, deletePost);
+        col = postPrint(name, date, tags, _id,userName, deletePost,getUserId,isLogged, user, readTime );
       }
     } else {
-      col = postPrint(name, date, postBody, tags, _id, deletePost);
+      col = postPrint(name, date, tags, _id,userName, deletePost, getUserId,isLogged,user, readTime);
     }
     // end relevant filter
 
@@ -67,6 +94,16 @@ latestWrapper.addEventListener("click", (event) => {
   printCard("latest");
 });
 
+let allWrapper = document.getElementById("all");
+allWrapper.addEventListener("click", (event) => {
+  allWrapper.classList.add("active");
+  latestWrapper.classList.remove("active");
+  relevantWrapper.classList.remove("active");
+  wrapper.innerHTML = "";
+  printCard();
+});
+
+
 // end anchor events
 
 let input = document.getElementById("search-input");
@@ -87,15 +124,15 @@ buttonLogin.forEach((element) => {
 });
 
 const signUp = () => {
-  localStorage.getItem("token")
+  sessionStorage.getItem("token")
     ? window.open("../views/home.html", "_self")
-    : window.open("../index.html", "_self");
+    : window.open("../views/login.html", "_self");
 };
 
 let signOut = document.querySelector("#btn-signOut");
 
-// signOut.addEventListener("click", () => {
-//   localStorage.removeItem("token");
-//   signUp();
-// });
+signOut.addEventListener("click", () => {
+  sessionStorage.removeItem("token");
+  signUp();
+});
 //end-rodo

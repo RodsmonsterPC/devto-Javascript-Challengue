@@ -135,6 +135,30 @@
   border: none;
 }
 
+.input-wrapper {
+  width: 25rem;
+}
+.input-wrapper input {
+  border: 1px solid rgb(59, 73, 223);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+.input-wrapper input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.input-wrapper:focus-within {
+  box-shadow: 0 0 0 0.15rem rgb(59, 73, 223);
+}
+.input-wrapper:hover {
+  box-shadow: 0 0 0 0.1rem rgb(142, 151, 255);
+}
+
+.brand-logo {
+  width: 3rem;
+}
+
 footer {
   width: 100%;
   background-color: rgb(221, 222, 225);
@@ -154,7 +178,7 @@ footer ul li {
 }
 
 .card-title {
-  font-size: 2.5em;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 .card-title a {
@@ -163,6 +187,11 @@ footer ul li {
 }
 .card-title a:hover {
   color: rgb(80, 99, 255);
+}
+
+.date-text {
+  font-size: 0.8em;
+  color: #808080;
 }
 
 .tabbar-main {
@@ -179,15 +208,23 @@ footer ul li {
   margin-bottom: 2em;
 }
 .list-tag__main li {
-  margin: 0 0.5em;
+  margin-right: 1em;
   color: #808080;
   cursor: pointer;
+  padding: 0.2em;
+  font-size: 0.9em;
+  border: 1px solid transparent;
 }
 .list-tag__main li:hover {
   border: 1px solid #808080;
   border-radius: 0.5em;
-  padding: 0.2em;
+  background: #ECECEC;
   cursor: pointer;
+}
+.list-tag__main li::nth-child(1) {
+  border: 1px solid #808080;
+  border-radius: 0.5em;
+  background: #ECECEC;
 }
 
 .card-img-cover {

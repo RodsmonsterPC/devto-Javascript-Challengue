@@ -21,237 +21,188 @@
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body>
-    <!-- Navbar - Karen -->
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light border-bottom bg-white">
-        <div
-          class="container d-flex flex-row justify-content-between align-items-center w-100"
-        >
-          <div class="d-flex align-items-center">
-            <button
-              class="navbar-toggler border border-0"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasExample"
-              aria-controls="offcanvasExample"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="../views/home.html">
-              <img
-                src="../assets/dev-badge.svg"
-                alt="logo"
-                width="40"
-                height="40"
-                class="d-inline-block align-text-top"
-              />
-            </a>
-            <div
-              class="input-group border rounded-2 align-items-center d-none d-lg-flex"
-            >
-              <input
-                type="search"
-                class="form-control border border-0"
-                placeholder="Search..."
-              />
-              <div class="input-group-append">
-                <button class="btn" type="button">
-                  <img src="../assets/search-icon.svg" alt="" />
-                </button>
+    <header class="mb-5">
+      <nav class=" navbar navbar-expand-lg navbar-light border-bottom bg-white fixed-top p-0">
+          <div class="container d-flex flex-row justify-content-between align-items-center w-100 pb-0 ">
+              <div class="d-flex align-items-center mb-0">
+                  <button class="navbar-toggler border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <a class="navbar-brand" href="./home.html">
+                      <img src="../assets/dev-badge.svg" alt="logo" class="d-inline-block align-text-top brand-logo">
+                  </a>
+                  <div class="input-group  input-wrapper  border rounded-2 align-items-center d-none d-lg-flex" >
+                      <input type="search" id="search-input" class="form-control border border-0" placeholder="Search..." value="">
+                      <div class="input-group-append">
+                        <button class="btn" type="button"><img src="../assets/search-icon.svg" alt=""></button>
+                      </div>
+                  </div>
               </div>
-            </div>
-          </div>
 
-          <div>
-            <button
-              type="button"
-              class="btn btn-outline-primary d-none d-lg-inline"
-            >
-              Create Post
-            </button>
-            <img
-              src="../assets/search-icon.svg"
-              alt="search"
-              class="iconsearch d-lg-none"
-              width="24"
-              height="24"
-            />
-            <img
-              src="../assets/notification-icon.svg"
-              alt="bell"
-              class="iconbell"
-              width="24"
-              height="24"
-            />
-            <img
-              src="../assets/profile-avatar.webp"
-              alt="profile avatar"
-              width="40"
-              height="40"
-              class="rounded-circle"
-            />
+              <div>
+                  <button type="button" class="btn btn-home d-none d-lg-inline mx-3">
+                      <a href="./createPost.html">Create Post</a>
+                  </button>
+
+                  <img src="../assets/search-icon.svg" alt="search" class="iconsearch d-lg-none" width="24" height="24">
+                  <img src="../assets/notification-icon.svg" alt="bell" class="iconbell" width="24" height="24">
+                  <div class="btn-group mx-2" role="group">
+                      <button type="button" class="btn btn-primary dropdown-toggle btn-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="../assets/profile-avatar.webp" alt="profile avatar" width="40" height="40" class="rounded-circle">
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a id="btn-signOut" class="dropdown-item" href="#">Sign Out</a></li>
+                        
+                      </ul>
+                    </div>
+                  
+              </div>
           </div>
-        </div>
+       
       </nav>
-      <div
-        class="offcanvas offcanvas-start"
-        tabindex="-1"
-        id="offcanvasExample"
-        aria-labelledby="offcanvasExampleLabel"
-      >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-            DEV Community 👩‍💻👨‍💻
-          </h5>
-          <button
-            type="button"
-            class="btn-close text-reset"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
-        </div>
-        <ul class="list-options px-2">
-          <li class="">
-            <a class="text-decoration-none" href="">
-              <i>
-                <img src="../assets/home-icon.svg" alt="" />
-              </i>
-              Home
-            </a>
-          </li>
-          <li class="">
-            <a class="text-decoration-none" href="">
-              <i>
-                <img src="../assets/listings-icon.svg" alt="" />
-              </i>
-              Listings
-            </a>
-          </li>
-          <li class="">
-            <a class="text-decoration-none" href="">
-              <i>
-                <img src="../assets/podcast-icon.svg" alt="" />
-              </i>
-              Podcasts
-            </a>
-          </li>
-          <li class="">
-            <a class="text-decoration-none" href="">
-              <i>
-                <img src="../assets/video-icon.svg" alt="" />
-              </i>
-              Videos
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/tag-icon.svg" alt="" />
-              </i>
-              Tags
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/faq-icon.svg" alt="" />
-              </i>
-              FAQ
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/foremShop-icon.svg" alt="" />
-              </i>
-              Forem Shop
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/sponsors-icon.svg" alt="" />
-              </i>
-              Sponsors
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/about-icon.svg" width="20" alt="" />
-              </i>
-              About
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/contact-icon.svg" width="20" alt="" />
-              </i>
-              Contact
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/guides-icon.svg" width="20" alt="" />
-              </i>
-              Guides
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img
-                  src="../assets/softwareComparison-icon.svg"
-                  width="20"
-                  alt=""
-                />
-              </i>
-              Software comparisons
-            </a>
-          </li>
-        </ul>
-
-        <ul class="list-options px-2">
-          <h6 class="">Other</h6>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/codeConduct-icon.svg" width="20" alt="" />
-              </i>
-              Code of Conduct
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/privacyPolicy-icon.svg" width="20" alt="" />
-              </i>
-              Privacy Policy
-            </a>
-          </li>
-          <li class="">
-            <a class="" href="">
-              <i>
-                <img src="../assets/terms-icon.svg" width="20" alt="" />
-              </i>
-              Terms of Use
-            </a>
-          </li>
-        </ul>
-        <div class="d-flex justify-content-around px-2">
-          <img src="../assets/tw-icon.svg" alt="" />
-          <img src="../assets/fb-icon.svg" alt="" />
-          <img src="../assets/gh-icon.svg" alt="" />
-          <img src="../assets/ig-icon.svg" alt="" />
-          <img src="../assets/twt-icon.svg" alt="" />
-        </div>
-      </div>
-    </header>
-
-    <!-- End: Navba
-    <!-- End: Navbar - Karen -->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasExampleLabel">DEV Community 👩‍💻👨‍💻</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+          <ul class="list-options px-2">
+              <li class="">
+                  <a class="text-decoration-none" href="">
+                      <i>
+                        <img src="../assets/home-icon.svg" alt="">
+                      </i>
+                      Home
+                  </a>
+              </li>
+              <li class="">
+                  <a class="text-decoration-none" href="">
+                      <i>
+                        <img src="../assets/listings-icon.svg" alt="">
+                      </i>
+                      Listings
+                  </a>
+              </li>
+              <li class="">
+                  <a class="text-decoration-none" href="">
+                      <i>
+                        <img src="../assets/podcast-icon.svg" alt="">
+                      </i>
+                      Podcasts
+                  </a>
+              </li>
+              <li class="">
+                  <a class="text-decoration-none" href="">
+                      <i>
+                        <img src="../assets/video-icon.svg" alt="">
+                      </i>
+                      Videos
+                  </a>
+              </li>
+              <li class="">
+                  <a class="" href="">
+                      <i>
+                        <img src="../assets/tag-icon.svg" alt="">
+                      </i>
+                      Tags
+                  </a>
+              </li>
+              <li class="">
+                  <a class="" href="">
+                      <i>
+                        <img src="../assets/faq-icon.svg" alt="">
+                      </i>
+                      FAQ
+                  </a>
+              </li>
+              <li class="">
+                  <a class="" href="">
+                      <i>
+                        <img src="../assets/foremShop-icon.svg" alt="">
+                      </i>
+                      Forem Shop
+                  </a>
+              </li>
+              <li class="">
+                  <a class="" href="">
+                      <i>
+                        <img src="../assets/sponsors-icon.svg" alt="">
+                      </i>
+                      Sponsors
+                  </a>
+              </li>
+              <li class="">
+                  <a class="" href="">
+                      <i>
+                        <img src="../assets/about-icon.svg" width="20" alt="">
+                      </i>
+                      About
+                  </a>
+              </li>
+              <li class="">
+                  <a class="" href="">
+                      <i>
+                        <img src="../assets/contact-icon.svg" width="20" alt="">
+                      </i>
+                      Contact
+                  </a>
+              </li>
+              <li class="">
+                  <a class="" href="">
+                      <i>
+                        <img src="../assets/guides-icon.svg" width="20" alt="">
+                      </i>
+                      Guides
+                  </a>
+              </li>
+              <li class="">
+                  <a class="" href="">
+                      <i>
+                        <img src="../assets/softwareComparison-icon.svg" width="20" alt="">
+                      </i>
+                      Software comparisons
+                  </a>
+              </li>
+          </ul>
+          
+                  <ul class="list-options px-2">
+                      <h6 class="">Other</h6>
+                      <li class="">
+                          <a class="" href="">
+                              <i>
+                                <img src="../assets/codeConduct-icon.svg" width="20" alt="">
+                              </i>
+                              Code of Conduct
+                          </a>
+                      </li>
+                      <li class="">
+                          <a class="" href="">
+                              <i>
+                                <img src="../assets/privacyPolicy-icon.svg" width="20" alt="">
+                              </i>
+                              Privacy Policy
+                          </a>
+                      </li>
+                      <li class="">
+                          <a class="" href="">
+                              <i>
+                                <img src="../assets/terms-icon.svg" width="20" alt="">
+                              </i>
+                              Terms of Use
+                          </a>
+                      </li>
+                  </ul>
+                  <div class="d-flex justify-content-around px-2 ">
+                      <img src="../assets/tw-icon.svg" alt="">
+                      <img src="../assets/fb-icon.svg" alt="">
+                      <img src="../assets/gh-icon.svg" alt="">
+                      <img src="../assets/ig-icon.svg" alt="">
+                      <img src="../assets/twt-icon.svg" alt="">
+                 </div>
+             </div>
+  
+     </div>
+  </header>
+  <!-- End: Navbar - Karen -->
 
     <!-- Principal Content - TEAM 6 -->
     <section class="container my-3">
@@ -330,7 +281,7 @@
         <main class="col-12 col-lg-8 col-md-8">
           <section class="">
             <div class="card">
-              <img id="post-image" src="" class="card-img-top" alt="..." />
+              <img id="post-image" src="" class="card-img-cover" alt="..." />
               <div class="card-body py-4 px-5">
                 <div class="d-flex mb-3 align-items-center">
                   <img
@@ -360,21 +311,20 @@
                 </div>
                 <div class="d-flex">
                   <img
-                    class="rounded-circle border object-fit-cover me-3"
+                    class="rounded-circle border object-fit-cover me-3 mb-5"
                     src="https://i.pravatar.cc/"
                     style="width: 40px; height: 40px"
                   />
-                  <div class="card-comment_wrapper w-100 p-3">
-                    <input type="text" class="form-control" placeholder="name"  id="name-comment" />
+                  <div class="card-comment_wrapper w-100 p-0">
                     <textarea
-                      class="form-control mt-3"
+                      class="form-control "
                       id="text-comment"
                       rows="4"
                     ></textarea>
                   </div>
                
                 </div>
-                <div class="ms-5 ps-4 mb-5">
+                <div class="ms-5 ps-2 mb-5">
                   <button type="button" class="btn btn-primary mt-3" id="comment-btn">
                     Comment
                   </button>
@@ -391,7 +341,7 @@
         <!--End: Principal Main - Eddie -->
 
         <!-- Right Aside - Manu -->
-        <aside class="d-none d-lg-block col-12 col-lg-3">
+        <aside class="d-none d-lg-block col-12 col-lg-3 mt-2 pt-2">
           <div class="card p-3">
             <a href="" class="text-decoration-none text-black">
               <div class="d-flex mb-3 align-items-center">

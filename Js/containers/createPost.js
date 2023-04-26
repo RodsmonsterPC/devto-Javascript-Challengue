@@ -1,40 +1,45 @@
-import { createPost } from "../api/api.js";
+import { createPost,getpayloadFromToken,getUserId,getPostId } from "../api/api.js";
 
 let btn = document.getElementById("add-button");
+//obtener el token del localstorage
+let token = sessionStorage.getItem("token");
 
 let inputTag = document.getElementById("key-tag");
 let tagList = document.getElementById("tag-list");
 let textareaContent = document.getElementById("key-content");
 let inputTitle = document.getElementById("key-title");
-let inputAuthor = document.getElementById("key-author");
 let inputImage = document.getElementById("key-image");
 let inputRelevant = document.getElementById("key-relevant");
-let tags = [];
-let postInfo = {};
+let Tags = [];
+let user = getpayloadFromToken(token);
+let userId = await getUserId(user);
+let userName = userId.data.userss.name;
 
+let postInfo = {};
 const createForm = () => {
-  let TagArray = Object.values(tags);
+  let TagArrays = Object.values(Tags);
   let relevant =
     inputRelevant.type === "checkbox"
       ? inputRelevant.checked
       : inputRelevant.value;
   postInfo = {
-    title: inputTitle.value,
-    image: inputImage.value,
-    author: inputAuthor.value,
-    Tag: TagArray,
-    comments: {},
-    content: textareaContent.value,
-    relevant: relevant,
+    name: inputTitle.value,
+    userName: userName,
     date: new Date().getTime(),
+    imgSrc: inputImage.value,
+    postBody: textareaContent.value,
+    tags: TagArrays,
+    user: getpayloadFromToken(token),
+    relevant:  relevant,
   };
   console.log(postInfo);
   createPost(postInfo);
 };
+  console.log(token);
 
 const createTag = () => {
   tagList.innerHTML = "";
-  tags.forEach((tag) => {
+  Tags.forEach((tag) => {
     let li = document.createElement("li");
     li.classList.add("tag-item");
     let span = document.createElement("span");
@@ -55,7 +60,7 @@ const removeTag = () => {
   let close = document.querySelectorAll(".close");
   close.forEach((item, index) => {
     item.addEventListener("click", () => {
-      tags.splice(index, 1);
+      Tags.splice(index, 1);
       createTag();
     });
   });
@@ -64,8 +69,8 @@ const removeTag = () => {
 const addTag = (e) => {
   if (e.key === "Enter") {
     let tag = e.target.value.replace(/\s+/g, " ");
-    if (tag.length > 1 && !tags.includes(tag)) {
-      if (tags.length >= 4) {
+    if (tag.length > 1 && !Tags.includes(tag)) {
+      if (Tags.length >= 4) {
         let tagAlert = document.querySelector(".tag-alert");
         tagAlert.style.display = "block";
         setTimeout(() => {
@@ -74,7 +79,7 @@ const addTag = (e) => {
         return;
       }
       tag.split(",").forEach((tag) => {
-        tags.push(tag);
+        Tags.push(tag);
         createTag();
       });
     }
@@ -86,7 +91,7 @@ inputTag.addEventListener("keyup", addTag);
 
 btn.addEventListener("click", () => {
   createForm();
-  window.open("../../views/home.html", "_self");
+  // window.open("../../views/home.html", "_self");
 });
 
 // const myModal = document.getElementById('myModal')
@@ -121,34 +126,67 @@ preview.addEventListener("click", () => {
   document.getElementById("list-input").style.display = "none";
   document.getElementById("preview").style.display = "block";
 
-  let TagArrays = Object.values(tags);
+
+
+  let TagArrays = Object.values(Tags);
+
   let relevants =
     inputRelevant.type === "checkbox"
       ? inputRelevant.checked
       : inputRelevant.value;
   postInfo = {
-    title: inputTitle.value,
-    image: inputImage.value,
-    author: inputAuthor.value,
-    Tag: TagArrays,
-    comments: {},
-    content: textareaContent.value,
-    relevant: relevants,
+    name: inputTitle.value,
+    userName: userName,
     date: new Date().getTime(),
+    imgSrc: inputImage.value,
+    postBody: textareaContent.value,
+    tags: TagArrays,
+    user: getpayloadFromToken(token),
+    relevant: relevants,
+
   };
-  let { title, image, author, Tag, content, relevant } = postInfo;
-  previewTitle.innerHTML = title;
-  previewImage.innerHTML = image;
-  previewAuthor.innerHTML = author;
-  previewContent.innerHTML = content;
-  previewRelevant.innerHTML = relevants;
+  let { name, imgSrc, tags, postBody, relevant } = postInfo;
+  previewTitle.innerHTML = name;
+  previewImage.innerHTML = imgSrc;
+  previewImage.setAttribute("style", "width: 100%; height: 100%");
+  previewContent.innerHTML = postBody;
   previewTagList.innerHTML = "";
-  Tag.forEach((tag) => {
+  tags.forEach((tag) => {
     let li = document.createElement("li");
     li.classList.add("tag-item");
     let span = document.createElement("span");
     span.textContent = `#${tag}`;
     li.append(span);
     previewTagList.appendChild(li);
-  });
+  }
+  );
+
 });
+
+
+// const editPost = () => {
+//   let TagArrays = Object.values(Tags);
+//   let relevants =
+//     inputRelevant.type === "checkbox"
+//       ? inputRelevant.checked
+//       : inputRelevant.value;
+//   postInfo = {
+//     name: inputTitle.value,
+//     userName: userName,
+//     date: new Date().getTime(),
+//     imgSrc: inputImage.value,
+//     postBody: textareaContent.value,
+//     tags: TagArrays,
+//     user: getpayloadFromToken(token),
+//     relevant: relevants,
+//   };
+//   console.log(postInfo);
+//   createPost(postInfo);
+// }
+
+// let editBtn = document.getElementById("edit-btn");
+// editBtn.addEventListener("click", () => {
+//   editPost();
+//   window.open("../../views/home.html", "_self");
+// }
+// );
