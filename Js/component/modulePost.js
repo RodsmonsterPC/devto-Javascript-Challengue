@@ -41,6 +41,7 @@ const postPrint = (
   nameInfo,
   dateCreate,
   postTitle,
+  imgSrc,
   postTags,
   key,
   deletePost,
@@ -53,7 +54,7 @@ const postPrint = (
 
   cover.classList.add("card-img-cover");
 
-  cover.setAttribute("src", "https://picsum.photos/200/100");
+  cover.setAttribute("src", imgSrc);
 
   let divBody = document.createElement("div");
   divBody.classList.add("card-body");
@@ -100,7 +101,7 @@ const postPrint = (
   h1Title.classList.add("card-title");
 
   let anchor = document.createElement("a");
-  anchor.setAttribute("href", `./detailPost.html?postId=${key}`);
+  anchor.setAttribute("href", `/views/detailPost.html?postId=${key}`);
   anchor.textContent = postTitle;
 
   h1Title.appendChild(anchor);

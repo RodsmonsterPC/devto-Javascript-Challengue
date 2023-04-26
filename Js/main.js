@@ -25,7 +25,7 @@ const printCard = async (filterBy) => {
   //    end latest filter
 
   for (let post of dataPost) {
-    let { tags, name, postBody, date, image, relevant, _id } = post;
+    let { tags, name, postBody, date, imgSrc, relevant, _id } = post;
 
     console.log(post);
     let col;
@@ -34,10 +34,10 @@ const printCard = async (filterBy) => {
     if (filterBy == "relevant") {
       if (post.relevant) {
         let { tags, name, date } = post;
-        col = postPrint(name, date, postBody, tags, _id, deletePost);
+        col = postPrint(name, date, postBody, imgSrc, tags, _id, deletePost);
       }
     } else {
-      col = postPrint(name, date, postBody, tags, _id, deletePost);
+      col = postPrint(name, date, postBody, imgSrc, tags, _id, deletePost);
     }
     // end relevant filter
 

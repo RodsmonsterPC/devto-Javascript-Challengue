@@ -1,6 +1,6 @@
 const URL_BASE = "http://localhost:8081";
 const authToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDc0M2E1MzQxNTAzYjMyODk2MzAzNiIsImlhdCI6MTY4MjM5MjE4NCwiZXhwIjoxNjgyNDc4NTg0fQ.LcJiH7D7cGVeS4N7rSQSEBz9898AHvOsPF3LFRbPWP0";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDc0M2E1MzQxNTAzYjMyODk2MzAzNiIsImlhdCI6MTY4MjQ3NzQ1OCwiZXhwIjoxNjgyNTYzODU4fQ.VPKgbZkSstAhfGUm8JvtGqrNtC5h5z13pXmLkBdFI04";
 
 const token = sessionStorage.setItem("token", authToken);
 
@@ -21,7 +21,7 @@ const getPost = async () => {
   }
 };
 
-const getPostId = async (id) => {
+const getPostId = async (id, token) => {
   try {
     let response = await fetch(`${URL_BASE}/posts/${id}`, {
       headers: {
@@ -31,7 +31,6 @@ const getPostId = async (id) => {
 
     let data = await response.json();
 
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -79,6 +78,14 @@ const updatePost = async (id, updateData) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+const getpayloadFromToken = (token) => {
+  const [header, payload, secretKey] = token.split(".");
+  const decodePayload = atob(payload);
+  const jsonPayload = JSON.parse(decodePayload);
+
+  return jsonPayload.id;
 };
 
 //Fire Base
@@ -144,7 +151,5 @@ export {
   createPost,
   deletePost,
   updatePost,
-  createComment,
-  getComment,
-  deleteComment,
+  getpayloadFromToken,
 };
