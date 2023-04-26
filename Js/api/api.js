@@ -1,6 +1,6 @@
 const URL_BASE = "http://localhost:8081";
 const authToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDc0M2E1MzQxNTAzYjMyODk2MzAzNiIsImlhdCI6MTY4MjQ3NzQ1OCwiZXhwIjoxNjgyNTYzODU4fQ.VPKgbZkSstAhfGUm8JvtGqrNtC5h5z13pXmLkBdFI04";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDc0M2E1MzQxNTAzYjMyODk2MzAzNiIsImlhdCI6MTY4MjUyMTYyOSwiZXhwIjoxNjgyNjA4MDI5fQ.O58k1xux_y03suT9WDi8wafYk0LAGKirC_BpX8G7ACU";
 
 const token = sessionStorage.setItem("token", authToken);
 
@@ -39,7 +39,7 @@ const getPostId = async (id, token) => {
 
 const createPost = async (postInfo) => {
   try {
-    let response = await fetch(`${URL_BASE}/posts`, {
+    const response = await fetch(`${URL_BASE}/posts`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${authToken}`,
@@ -65,7 +65,7 @@ const deletePost = async (id) => {
   }
 };
 
-const updatePost = async (id, updateData) => {
+const updatePost = async (id, updateData, token) => {
   try {
     let response = await fetch(`${URL_BASE}/posts/${id}`, {
       method: "PATCH",
@@ -75,6 +75,8 @@ const updatePost = async (id, updateData) => {
       },
       body: JSON.stringify(updateData),
     });
+    let data = response.json();
+    return data;
   } catch (error) {
     console.log(error);
   }
