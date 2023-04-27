@@ -2,12 +2,12 @@ import { getPostId } from "../api/api.js";
 
 let urlParams = new URLSearchParams(window.location.search);
 let postId = urlParams.get("postId");
-console.log(postId);
+
 
 const printPost = async () => {
   let postDetail = await getPostId(postId)
   const dataPostDetail = postDetail.data.post;
-  console.log(dataPostDetail);
+
 
   let { imgSrc,date, name, tags, postBody, userName } = dataPostDetail;
 

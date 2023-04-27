@@ -15,7 +15,7 @@ const getPost = async () => {
     console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
@@ -29,6 +29,8 @@ const getpayloadFromToken = (token)=>{
 }
 
 
+
+
 const getPostId = async (id) => {
   try {
     let response = await fetch(
@@ -38,12 +40,12 @@ const getPostId = async (id) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response)
+  
     let data = await response.json();
-    console.log(data);
+
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 
 
@@ -60,12 +62,29 @@ const createPost = async (postInfo) => {
       },
     });
     let data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(message.error);
+    return error;
   }
 };
+
+const updatePost = async (id, postInfo) => {
+  try {
+    let response = await fetch(`${URL_BASE}/posts/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(postInfo),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
 
 
 const getUserId = async (id) => {
@@ -80,7 +99,7 @@ const getUserId = async (id) => {
     let data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
@@ -98,7 +117,7 @@ const createUser = async(userData) =>{
     return data
     
   } catch (error) {
-    console.log(error)
+    return error
     
   }
 }
@@ -117,7 +136,7 @@ const loginUser = async(userData) => {
     return data
     
   } catch (error) {
-    console.log(error)
+    return error
     
   }
 }
@@ -133,10 +152,9 @@ const createComment = async (commentInfo) => {
       },
     });
     let data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(message.error);
+    return error;
   }
 };
 const getComment = async (id) => {
@@ -151,7 +169,7 @@ const getComment = async (id) => {
     let data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
@@ -168,7 +186,7 @@ const deletePost = async (id) => {
     let data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
@@ -178,15 +196,22 @@ const deletePost = async (id) => {
 
 
 
-const deleteComment = async (id, key) => {
-  let response = await fetch(
-    `https://devto-9f944-default-rtdb.firebaseio.com/data/${id}/comments/${key}/.json`,
-    { method: "DELETE" }
-  );
-  let data = response.json();
-  return data;
+const deleteComment = async (id) => {
+  try {
+    let response = await fetch(
+      `${URL_BASE}/comments/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    return error;
+  }
 };
-
 
 
 
@@ -202,5 +227,6 @@ export {
   getpayloadFromToken,
   getUserId,
   createUser,
-  loginUser
+  loginUser,
+  updatePost
 };

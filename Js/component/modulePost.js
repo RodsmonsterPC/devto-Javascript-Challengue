@@ -3,6 +3,7 @@ const postPrint = (
   nameInfo,
   dateCreate,
   postTags,
+  imgSrc,
   key,
   users,
   deletePost,
@@ -19,7 +20,7 @@ const postPrint = (
 
   cover.classList.add("card-img-cover");
 
-  cover.setAttribute("src", "https://picsum.photos/200/100");
+  cover.setAttribute("src", imgSrc);
 
   let divBody = document.createElement("div");
   divBody.classList.add("card-body");
@@ -33,7 +34,7 @@ const postPrint = (
   deleteBtn.innerHTML = isLogged === userId ? "&times;" : "";
   deleteBtn.addEventListener('click',(e)=>{
     deletePost(key)
-    e.target.parentElement.parentElement.remove()
+    divContainer.remove()
   })
 
   let editBtn = document.createElement("span");
@@ -252,8 +253,10 @@ const createCommentCard = (
   anchor.textContent = "Delete";
 
   anchor.addEventListener("click", (e) => {
-    deleteComment(id, key);
-    e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+    deleteComment(key);
+
+    //remove list item
+    divContainer.remove();
   });
 
   liList.appendChild(anchor);

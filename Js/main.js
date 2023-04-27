@@ -9,7 +9,7 @@ const printCard = async (filterBy) => {
   let dataPost = post.data.post;
 
 
-  console.log(dataPost);
+
     // start latest filter
     if (filterBy == "latest") {
       let sortedPosts = [];
@@ -36,14 +36,14 @@ const printCard = async (filterBy) => {
 
   for (let post of dataPost) {
     
-    let { tags, name, date, image, relevant, _id,userName,user, postBody} = post;
+    let { tags, name, date, imgSrc, relevant, _id,userName,user, postBody} = post;
 
   //save user in a variable to use it in the postPrint function 
   const token = sessionStorage.getItem("token");
   const isLogged = getpayloadFromToken(token);
 
 
-  console.log(postBody);
+
   //calculate to read time of the post
   let wordsPerMinute = 200;
   let noOfWords = postBody.split(/\s/g).length;
@@ -51,7 +51,7 @@ const printCard = async (filterBy) => {
   let readTime = Math.ceil(minutes);
 
 
-  console.log(readTime);
+
 
 
 
@@ -61,10 +61,10 @@ const printCard = async (filterBy) => {
     if (filterBy == "relevant") {
       if (post.relevant) {
         let { tags, name, date } = post;
-        col = postPrint(name, date, tags, _id,userName, deletePost,getUserId,isLogged, user, readTime );
+        col = postPrint(name, date, tags,imgSrc, _id,userName, deletePost,getUserId,isLogged, user, readTime );
       }
     } else {
-      col = postPrint(name, date, tags, _id,userName, deletePost, getUserId,isLogged,user, readTime);
+      col = postPrint(name, date, tags,imgSrc, _id,userName, deletePost, getUserId,isLogged,user, readTime);
     }
     // end relevant filter
 

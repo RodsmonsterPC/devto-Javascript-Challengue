@@ -1,8 +1,12 @@
-import { createPost,getpayloadFromToken,getUserId,getPostId } from "../api/api.js";
+import { createPost,getpayloadFromToken,getUserId,getPostId, updatePost } from "../api/api.js";
 
 let btn = document.getElementById("add-button");
 //obtener el token del localstorage
 let token = sessionStorage.getItem("token");
+
+//query selector
+let urlParams = new URLSearchParams(window.location.search);
+let idParam = urlParams.get("postId");
 
 let inputTag = document.getElementById("key-tag");
 let tagList = document.getElementById("tag-list");
@@ -32,10 +36,10 @@ const createForm = () => {
     user: getpayloadFromToken(token),
     relevant:  relevant,
   };
-  console.log(postInfo);
+
   createPost(postInfo);
 };
-  console.log(token);
+
 
 const createTag = () => {
   tagList.innerHTML = "";
@@ -50,7 +54,7 @@ const createTag = () => {
     li.append(span, close);
 
     tagList.appendChild(li);
-    console.log(tag);
+  
   });
   removeTag();
 };
@@ -89,10 +93,7 @@ const addTag = (e) => {
 
 inputTag.addEventListener("keyup", addTag);
 
-btn.addEventListener("click", () => {
-  createForm();
-  // window.open("../../views/home.html", "_self");
-});
+
 
 // const myModal = document.getElementById('myModal')
 // const myInput = document.getElementById('myInput')
@@ -147,7 +148,7 @@ preview.addEventListener("click", () => {
   };
   let { name, imgSrc, tags, postBody, relevant } = postInfo;
   previewTitle.innerHTML = name;
-  previewImage.innerHTML = imgSrc;
+  previewImage.setAttribute("src", imgSrc);
   previewImage.setAttribute("style", "width: 100%; height: 100%");
   previewContent.innerHTML = postBody;
   previewTagList.innerHTML = "";
@@ -164,29 +165,48 @@ preview.addEventListener("click", () => {
 });
 
 
-// const editPost = () => {
-//   let TagArrays = Object.values(Tags);
-//   let relevants =
-//     inputRelevant.type === "checkbox"
-//       ? inputRelevant.checked
-//       : inputRelevant.value;
-//   postInfo = {
-//     name: inputTitle.value,
-//     userName: userName,
-//     date: new Date().getTime(),
-//     imgSrc: inputImage.value,
-//     postBody: textareaContent.value,
-//     tags: TagArrays,
-//     user: getpayloadFromToken(token),
-//     relevant: relevants,
-//   };
-//   console.log(postInfo);
-//   createPost(postInfo);
-// }
+//get post id
+let postId = await getPostId(idParam);
 
-// let editBtn = document.getElementById("edit-btn");
-// editBtn.addEventListener("click", () => {
-//   editPost();
-//   window.open("../../views/home.html", "_self");
-// }
-// );
+//get post info
+const getPostInfo = async () => {
+  let postInfo = await getPostId(idParam);
+  let post = postInfo.data.post;
+  inputTitle.value = post.name;
+  inputImage.value = post.imgSrc;
+  textareaContent.value = post.postBody;
+  inputRelevant.checked = post.relevant;
+  Tags = post.tags;
+  createTag();
+
+}
+
+getPostInfo();
+
+//guardar todo lo que tiene getPostInfo en un spread operator y luego hacer un put con el spread operator
+
+btn.innerHTML = idParam ? "Update" : "Create";
+
+
+btn.addEventListener("click", () => {
+  
+  if (idParam) {
+    //save spreed operator 
+    let postInfo = {
+      name: inputTitle.value,
+      userName: userName,
+      date: new Date().getTime(),
+      imgSrc: inputImage.value,
+      postBody: textareaContent.value,
+      tags: Tags,
+      user: getpayloadFromToken(token),
+      relevant: inputRelevant.checked,
+    };
+    updatePost(idParam, postInfo);
+    window.open("../../views/home.html", "_self");
+  } else {
+    createForm();
+    window.open("../../views/home.html", "_self");
+  }
+}
+);

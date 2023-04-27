@@ -9,7 +9,7 @@ inputsValue.forEach((fieldsData) => {
   fieldsData.addEventListener("keyup", (event) => {
     let property = event.target.name;
     let value = event.target.value;
-    console.log(value);
+  
     data[property] = value;
   });
 });
@@ -18,8 +18,9 @@ const submitForm = async() => {
  
   const tokenData = await loginUser(data)
   const tokenObject = tokenData.data.token
-  sessionStorage.setItem("token",  tokenObject)
+  sessionStorage.setItem("token",  tokenObject),
   window.open("../../views/home.html", "_self")
+
 };
 
 const resetForm = () => {

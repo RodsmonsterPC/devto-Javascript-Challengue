@@ -19,22 +19,24 @@ let userName = userId.data.userss.name;
 
 
 const getCommentList = async () => {
+    
     wrapper.innerHTML = '';
     let commentList = await getComment(postIds);
     let comentListArray = commentList.data.comment;
-    console.log(comentListArray);
     let newArray = Object.values(comentListArray);
     let counter = newArray.length;
 
     for(let key in comentListArray){
-        let{comment,name,date} = comentListArray[key];
-        wrapper.appendChild(createCommentCard(name,comment,date,postIds,key,deleteComment))
+        let{comment,name,date,_id} = comentListArray[key];
+        wrapper.appendChild(createCommentCard(name,comment,date,postIds,_id,deleteComment))
     }
     commentLen.textContent = `(${counter})`
     
 }
 
 getCommentList();
+
+
 
 const createCommetForm = () => {
     let commentArray = {
@@ -46,12 +48,25 @@ const createCommetForm = () => {
 
     }
     createComment(commentArray);
+    comment.value = '';
 }
 
+const loadSpinner = () => {
+    let spinner = document.createElement('div');
+    spinner.classList.add('spinner-border');
+    spinner.setAttribute('role', 'status');
+    wrapper.appendChild(spinner);
+}
+
+
+
+
 btn.addEventListener('click', () => {
-  
-    createCommetForm();
+   createCommetForm();
+   setTimeout(() => {
     getCommentList();
+    }, 1000);
+    
     wrapper.innerHTML = '';
     comment.value = '';
 }

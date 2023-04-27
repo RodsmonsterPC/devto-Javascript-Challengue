@@ -7,8 +7,13 @@ form.forEach((field) => {
       let property = event.target.name;
       let value = event.target.value;
       user[property] = value;
+      console.log(user);
+
     });
   });
-document.querySelector("button").addEventListener("click", ()=>{
-    createUser(user)
-} )
+document.getElementById("button-signup").addEventListener("click", () => {
+
+  createUser(user)
+  window.open("../../views/login.html", "_self")
+}
+)
